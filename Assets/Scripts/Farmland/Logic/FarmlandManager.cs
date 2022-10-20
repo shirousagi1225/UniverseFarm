@@ -22,7 +22,10 @@ public class FarmlandManager : Singleton<FarmlandManager>
 
     public void SetFarmlandState(FarmlandName farmlandName)
     {
-        //變換農地狀態(以機率控制)
+        //變換農地狀態
+        //農田管理(解鎖、修繕)
+        //作物狀況提示（缺水、害蟲、施肥）：以機率控制
+        //農田提示（可翻土、可種植、可收成）
     }
 
     public void SetCropState()
