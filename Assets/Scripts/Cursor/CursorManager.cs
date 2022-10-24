@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CursorManager : MonoBehaviour
 {
@@ -13,15 +14,29 @@ public class CursorManager : MonoBehaviour
         canClick = ObjectAtMousePosition();
         CameraManager.Instance.IsClick(canClick);
 
-        if (canClick&&Input.GetMouseButtonDown(0))
+        //桌機：判斷是否點擊UI（為了區別是單純的點擊螢幕還是要和UI互動)
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            ClickAction(ObjectAtMousePosition().gameObject);
-        }
-        else
-        {
-            CameraManager.Instance.InputType();
+            if (canClick && Input.GetMouseButtonDown(0))
+            {
+                #if !UNITY_EDITOR && UNITY_ANDROID
+                    bool isTouchUIElement = EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
+
+                    if(!isTouchUIElement)
+                    {
+                        ClickAction(ObjectAtMousePosition().gameObject);
+                    }
+                #else
+                ClickAction(ObjectAtMousePosition().gameObject);
+                #endif
+            }
+            else
+            {
+                CameraManager.Instance.InputType();
+            }
         }
     }
+
     private void ClickAction(GameObject clickObject)
     {
         switch (clickObject.tag)
@@ -30,12 +45,18 @@ public class CursorManager : MonoBehaviour
                 var teleport = clickObject.GetComponent<Teleport>();
                 teleport?.TeleportToScene();
                 break;
-            case "Farmland":
+            /*case "Farmland":
                 var farmland=clickObject.GetComponent<Farmland>();
-                /*if (farmland.isPlant == false)
+                if (farmland.isPlant == false)
                     farmland?.PlantAction();
                 else
-                    farmland?.FarmlandClicked();*/
+                    farmland?.FarmlandClicked();
+                break;*/
+            case "Crop":
+                //測試階段：收成方法寫在Crop.cs
+                var crop = clickObject.GetComponent<Crop>();
+                crop?.CropClicked();
+                //正式階段：收成方法寫在小圖示程式
                 break;
         }
     }

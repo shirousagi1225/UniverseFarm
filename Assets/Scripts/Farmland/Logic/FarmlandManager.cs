@@ -41,5 +41,9 @@ public class FarmlandManager : Singleton<FarmlandManager>
         }
     }
 
-    //須寫當次產量方法
+    //當次產量方法(未完成)
+    public int Produce(ItemName seedName)
+    {
+        return cropData.GetCropStateDetails(seedName).produce;
+    }
 }

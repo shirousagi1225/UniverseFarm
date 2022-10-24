@@ -3,11 +3,11 @@ using UnityEngine;
 
 public static class EventHandler
 {
-    public static event Action<ItemDetails, int> UpdateUIEvent;
+    public static event Action<ItemDetails, int,bool> UpdateUIEvent;
 
-    public static void CallUpdateUIEvent(ItemDetails itemDetails,int index)
+    public static void CallUpdateUIEvent(ItemDetails itemDetails,int index, bool isFirst)
     {
-        UpdateUIEvent?.Invoke(itemDetails,index);
+        UpdateUIEvent?.Invoke(itemDetails,index, isFirst);
     }
 
     public static event Action BeforeSceneUnloadEvent;

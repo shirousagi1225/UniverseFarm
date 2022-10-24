@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraManager : Singleton<CameraManager>
 {
@@ -12,7 +13,7 @@ public class CameraManager : Singleton<CameraManager>
     private bool canMoveCam=false;
     private bool isSingleFinger;
     private float scaleFactor = 0.01f;
-    private float minDistance = 1f;
+    private float minDistance = 3f;
     private float maxDistance = 10f;
     private Vector2 lastSingleTouchPos;
     private Vector2 oldTouchPos1;
@@ -65,25 +66,30 @@ public class CameraManager : Singleton<CameraManager>
 
     private void MobileInput()
     {
-        //須修復問題：轉換場景箭頭功能與畫面移動功能分離
         if (Input.touchCount <= 0)
         {
             isSingleFinger = true;
         }
         else if (isSingleFinger&&Input.touchCount == 1)
         {
-            if (canClick == false && Input.GetTouch(0).phase == TouchPhase.Began)
+            //行動裝置：判斷是否點擊UI（為了區別是單純的點擊螢幕還是要和UI互動)
+            bool isTouchUIElement = EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
+
+            if (!isTouchUIElement)
             {
-                lastSingleTouchPos = Input.GetTouch(0).position;
-                canMoveCam = true;
-            }
-            else if (canMoveCam&&Input.GetTouch(0).phase == TouchPhase.Moved)
-            {
-                MoveCamera(Input.GetTouch(0).position);
-            }
-            else if (Input.GetTouch(0).phase == TouchPhase.Ended)
-            {
-                canMoveCam = false;
+                if (canClick == false && Input.GetTouch(0).phase == TouchPhase.Began)
+                {
+                    lastSingleTouchPos = Input.GetTouch(0).position;
+                    canMoveCam = true;
+                }
+                else if (canMoveCam && Input.GetTouch(0).phase == TouchPhase.Moved)
+                {
+                    MoveCamera(Input.GetTouch(0).position);
+                }
+                else if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                {
+                    canMoveCam = false;
+                }
             }
         }
         else if (Input.touchCount == 2)
@@ -104,6 +110,7 @@ public class CameraManager : Singleton<CameraManager>
 
     private void MoveCamera(Vector2 inputPos)
     {
+        //須修復問題：鏡頭縮放造成邊界鎖定穿幫
         Vector3 lastTouchPos = Camera.main.ScreenToWorldPoint(new Vector3(lastSingleTouchPos.x, lastSingleTouchPos.y, 0));
         Vector3 currentTouchPos = Camera.main.ScreenToWorldPoint(new Vector3(inputPos.x, inputPos.y, 0));
 

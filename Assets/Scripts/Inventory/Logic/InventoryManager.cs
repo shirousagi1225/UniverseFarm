@@ -23,13 +23,13 @@ public class InventoryManager : Singleton<InventoryManager>
             {
                 itemList.Add(itemName);
                 itemData.GetItemDetails(itemName).itemCount += itemCount;
-                //須寫在背包場景啟動介面
-                //EventHandler.CallUpdateUIEvent(itemData.GetItemDetails(itemName),itemList.Count-1);
+                EventHandler.CallUpdateUIEvent(itemData.GetItemDetails(itemName),itemList.Count-1,true);
             }
         }
         else
         {
             itemData.GetItemDetails(itemName).itemCount += itemCount;
+            EventHandler.CallUpdateUIEvent(itemData.GetItemDetails(itemName), itemList.FindIndex(i => i == itemName),false);
         }
     }
 

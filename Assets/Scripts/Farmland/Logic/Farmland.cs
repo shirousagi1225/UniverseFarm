@@ -43,4 +43,7 @@ public class Farmland : MonoBehaviour
         FarmlandManager.Instance.SetSeed(farmlandName, seedName);
     }
 
+    //解鎖方法(未完成)
+
+    //修繕方法(未完成)
 }

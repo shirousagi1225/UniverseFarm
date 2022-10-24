@@ -13,7 +13,33 @@ MonoBehaviour:
   m_Name: SeedDataList
   m_EditorClassIdentifier: 
   itemDetailsList:
-  - itemName: 0
+  - itemName: 13
     itemSprite: {fileID: 0}
     itemCount: 0
-    itemProduce: 0
+  - itemName: 14
+    itemSprite: {fileID: 0}
+    itemCount: 0
+  - itemName: 15
+    itemSprite: {fileID: 0}
+    itemCount: 0
+  - itemName: 16
+    itemSprite: {fileID: 0}
+    itemCount: 0
+  - itemName: 17
+    itemSprite: {fileID: 0}
+    itemCount: 0
+  - itemName: 18
+    itemSprite: {fileID: 0}
+    itemCount: 0
+  - itemName: 19
+    itemSprite: {fileID: 0}
+    itemCount: 0
+  - itemName: 20
+    itemSprite: {fileID: 0}
+    itemCount: 0
+  - itemName: 21
+    itemSprite: {fileID: 0}
+    itemCount: 0
+  - itemName: 22
+    itemSprite: {fileID: 0}
+    itemCount: 0
