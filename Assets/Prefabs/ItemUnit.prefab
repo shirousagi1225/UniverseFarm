@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemImage: {fileID: 3949865464885959819}
+  crop: {fileID: 5338566736873998216, guid: e6fd195ee96bc244fb50b81fb0943838, type: 3}
 --- !u!1 &3949865466009584980
 GameObject:
   m_ObjectHideFlags: 0

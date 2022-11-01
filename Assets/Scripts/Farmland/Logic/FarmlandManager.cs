@@ -15,10 +15,7 @@ public class FarmlandManager : Singleton<FarmlandManager>
         return farmlandData.GetFarmlandDetails(farmlandName);
     }
 
-    public void SetSeed(FarmlandName farmlandName, ItemName seedName)
-    {
-        farmlandData.GetFarmlandDetails(farmlandName).seedName = seedName;
-    }
+    //用事件生成對應植物
 
     public void SetFarmlandState(FarmlandName farmlandName)
     {

@@ -11,7 +11,7 @@ public enum FarmlandName
 
 public enum FarmlandState
 {
-    None,Good, Maintain, Dry, Deworming, Fertilize, Dig
+    None,Good, Repair, Dry, Deworming, Fertilize, Dig, Plant, Harvest
 }
 
 public enum CropState

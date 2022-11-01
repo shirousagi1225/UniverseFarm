@@ -17,11 +17,15 @@ MonoBehaviour:
     farmlandStateSprite: {fileID: 0}
   - farmlandState: 2
     farmlandStateSprite: {fileID: 0}
-  - farmlandState: 2
-    farmlandStateSprite: {fileID: 0}
   - farmlandState: 3
     farmlandStateSprite: {fileID: 0}
   - farmlandState: 4
     farmlandStateSprite: {fileID: 0}
   - farmlandState: 5
+    farmlandStateSprite: {fileID: 0}
+  - farmlandState: 6
+    farmlandStateSprite: {fileID: 0}
+  - farmlandState: 7
+    farmlandStateSprite: {fileID: 0}
+  - farmlandState: 8
     farmlandStateSprite: {fileID: 0}

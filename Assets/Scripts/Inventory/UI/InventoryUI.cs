@@ -5,26 +5,28 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    public GameObject content;
+    public GameObject itemContent;
+    public GameObject seedContent;
     public GameObject itemUnit;
     public int currentIndex;
 
     private SlotUI slotUI;
-    private Dictionary<int, int> slotDict = new Dictionary<int, int>();
-    private int slotIndex;
+    //private Dictionary<int, int> itemSlotDict = new Dictionary<int, int>();
+    //private Dictionary<int, int> seedSlotDict = new Dictionary<int, int>();
+    //private int slotIndex;
 
     private void OnEnable()
     {
-        slotIndex = 0;
-        EventHandler.UpdateUIEvent += OnUpdateUIEvent;
+        //slotIndex = 0;
+        EventHandler.UpdateInventoryUIEvent += OnUpdateInventoryUIEvent;
     }
 
     private void OnDisable()
     {
-        EventHandler.UpdateUIEvent -= OnUpdateUIEvent;
+        EventHandler.UpdateInventoryUIEvent -= OnUpdateInventoryUIEvent;
     }
 
-    private void OnUpdateUIEvent(ItemDetails itemDetails, int index,bool isFirst)
+    private void OnUpdateInventoryUIEvent(ItemDetails itemDetails, ItemName itemName, int index,bool isFirst, string inventoryType)
     {
         if (itemDetails==null)
         {
@@ -34,18 +36,23 @@ public class InventoryUI : MonoBehaviour
         }
         else if(isFirst)
         {
-            Instantiate(itemUnit, content.transform);
-            slotDict.Add(index, slotIndex);
-            slotUI = content.transform.GetChild(slotDict[index]).transform.GetChild(1).GetComponent<SlotUI>();
+            Instantiate(itemUnit, itemContent.transform);
+            //slotDict.Add(index, slotIndex);
+            if (inventoryType== "Item")
+                slotUI = itemContent.transform.GetChild(index).transform.GetChild(1).GetComponent<SlotUI>();
+            else if(inventoryType == "Seed")
+                slotUI = seedContent.transform.GetChild(index).transform.GetChild(1).GetComponent<SlotUI>();
             currentIndex =index;
-            slotUI.SetItem(itemDetails);
-            slotIndex++;
+            slotUI.SetItem(itemDetails, itemName, isFirst,transform);
+            //slotIndex++;
         }
         else
         {
-            slotUI = content.transform.GetChild(slotDict[index]).transform.GetChild(1).GetComponent<SlotUI>();
-            currentIndex = index;
-            slotUI.SetItem(itemDetails);
+            if (inventoryType == "Item")
+                slotUI = itemContent.transform.GetChild(index).transform.GetChild(1).GetComponent<SlotUI>();
+            else if (inventoryType == "Seed")
+                slotUI = seedContent.transform.GetChild(index).transform.GetChild(1).GetComponent<SlotUI>();
+            slotUI.SetItem(itemDetails, itemName, isFirst, transform);
         }
     }
 }
