@@ -25,7 +25,7 @@ MonoBehaviour:
     - cropState: 3
       cropStateSprite: {fileID: 0}
   - seedName: 14
-    produce: 3
+    produce: 1
     CropDetailsList:
     - cropState: 0
       cropStateSprite: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
     - cropState: 3
       cropStateSprite: {fileID: 0}
   - seedName: 22
-    produce: 0
+    produce: 1
     CropDetailsList:
     - cropState: 0
       cropStateSprite: {fileID: 0}

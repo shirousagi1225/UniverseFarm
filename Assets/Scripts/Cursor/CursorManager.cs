@@ -50,21 +50,15 @@ public class CursorManager : MonoBehaviour
         EventHandler.ItemDragEvent -= OnItemDragEvent;
     }
 
-    private void OnItemDragEvent(ItemDetails itemDetails, ItemName itemName,GameObject crop)
+    private void OnItemDragEvent(ItemDetails seedDetails, ItemName itemName,GameObject crop)
     {
         var dropObject = ObjectAtMousePosition();
 
         if (canClick && dropObject.gameObject.tag == "Farmland")
         {
             Debug.Log("yes");
-            Instantiate(crop, dropObject.gameObject.transform);
-            dropObject.enabled = false;
-            dropObject.GetComponent<Farmland>().isBackpackOpen= !dropObject.GetComponent<Farmland>().isBackpackOpen;
-            for (int i = 0; i < mainCanvas.transform.childCount; i++)
-            {
-                mainCanvas.transform.GetChild(i).gameObject.SetActive(true);
-            }
-            mainCanvas.transform.GetChild(8).gameObject.SetActive(false);
+            //增加UIManager後須將mainCanvas去除
+            FarmlandManager.Instance.CreateCrop(seedDetails, itemName, crop, dropObject, mainCanvas);
         }
     }
 

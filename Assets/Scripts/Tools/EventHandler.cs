@@ -28,8 +28,8 @@ public static class EventHandler
     }
 
     public static event Action<ItemDetails,ItemName,GameObject> ItemDragEvent;
-    public static void CallItemDragEvent(ItemDetails itemDetails, ItemName itemName,GameObject crop)
+    public static void CallItemDragEvent(ItemDetails seedDetails, ItemName itemName,GameObject crop)
     {
-        ItemDragEvent?.Invoke(itemDetails, itemName, crop);
+        ItemDragEvent?.Invoke(seedDetails, itemName, crop);
     }
 }

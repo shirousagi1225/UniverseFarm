@@ -30,9 +30,14 @@ public class InventoryUI : MonoBehaviour
     {
         if (itemDetails==null)
         {
-            //等減少持有量方法寫完須增加刪除背包物品(未完成)
+            Debug.Log("null");
+            //刪除背包物品
+            if (inventoryType == "Item")
+                slotUI = itemContent.transform.GetChild(index).transform.GetChild(1).GetComponent<SlotUI>();
+            else if (inventoryType == "Seed")
+                slotUI = seedContent.transform.GetChild(index).transform.GetChild(1).GetComponent<SlotUI>();
             slotUI.SetEmpty();
-            currentIndex = -1;
+            //currentIndex = -1;
         }
         else if(isFirst)
         {

@@ -73,7 +73,13 @@ public class InventoryManager : Singleton<InventoryManager>
             if (itemCount <= itemData.GetItemDetails(itemName).itemCount)
             {
                 itemData.GetItemDetails(itemName).itemCount -= itemCount;
-                EventHandler.CallUpdateInventoryUIEvent(itemData.GetItemDetails(itemName), ItemName.None, itemList.FindIndex(i => i == itemName), false, "Item");
+                if (itemData.GetItemDetails(itemName).itemCount<=0)
+                {
+                    EventHandler.CallUpdateInventoryUIEvent(null, ItemName.None, itemList.FindIndex(i => i == itemName), false, "Item");
+                    itemList.Remove(itemName);
+                }
+                else
+                    EventHandler.CallUpdateInventoryUIEvent(itemData.GetItemDetails(itemName), ItemName.None, itemList.FindIndex(i => i == itemName), false, "Item");
             }
             else
             {
@@ -84,7 +90,13 @@ public class InventoryManager : Singleton<InventoryManager>
             if (itemCount <= seedData.GetItemDetails(itemName).itemCount)
             {
                 seedData.GetItemDetails(itemName).itemCount -= itemCount;
-                EventHandler.CallUpdateInventoryUIEvent(seedData.GetItemDetails(itemName), ItemName.None, seedList.FindIndex(i => i == itemName), false,"Seed");
+                if (seedData.GetItemDetails(itemName).itemCount<=0)
+                {
+                    EventHandler.CallUpdateInventoryUIEvent(null, ItemName.None, seedList.FindIndex(i => i == itemName), false, "Seed");
+                    seedList.Remove(itemName);
+                }
+                else
+                    EventHandler.CallUpdateInventoryUIEvent(seedData.GetItemDetails(itemName), ItemName.None, seedList.FindIndex(i => i == itemName), false,"Seed");
             }
         }
     }

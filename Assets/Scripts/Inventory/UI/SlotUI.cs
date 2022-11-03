@@ -19,9 +19,11 @@ public class SlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     {
         if (isFirst)
         {
+            //須寫判斷使用哪種UI來限制資訊初始化
             currentItem = itemName;
             currentSeed = itemDetails;
             beginDragParent = dragParent;
+
             itemImage.sprite = itemDetails.itemSprite;
             itemImage.SetNativeSize();
         }
@@ -52,8 +54,8 @@ public class SlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        EventHandler.CallItemDragEvent(currentSeed, currentItem, crop);
         transform.SetParent(startParent);
-        transform.position=startPos;
+        transform.position = startPos;
+        EventHandler.CallItemDragEvent(currentSeed, currentItem, crop);
     }
 }
