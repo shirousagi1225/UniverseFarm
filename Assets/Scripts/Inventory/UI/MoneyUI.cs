@@ -17,6 +17,8 @@ public class MoneyUI : MonoBehaviour
 
     private void OnUpdateMoneyUIEvent(ItemDetails itemDetails)
     {
-        //須寫抓取持有物數量方式
+        //抓取持有物數量
+        if(transform.GetChild(0).name==itemDetails.itemName.ToString())
+            transform.GetChild(1).GetComponent<Text>().text= itemDetails.itemCount.ToString();
     }
 }

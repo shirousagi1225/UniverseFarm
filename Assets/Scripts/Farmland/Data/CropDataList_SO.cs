@@ -1,5 +1,8 @@
+using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CropDataList", menuName = "Farmland/CropDataList_SO")]
@@ -23,6 +26,8 @@ public class CropStateDetails
 {
     public ItemName seedName;
     public int produce;
+    public int growTimeHr;
+    public int growTimeMin;
     public List<CropDetails> CropDetailsList;
 }
 

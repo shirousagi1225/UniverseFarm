@@ -8,7 +8,7 @@ public class InventoryUI : MonoBehaviour
     public GameObject itemContent;
     public GameObject seedContent;
     public GameObject itemUnit;
-    public int currentIndex;
+    //public int currentIndex;
 
     private SlotUI slotUI;
     //private Dictionary<int, int> itemSlotDict = new Dictionary<int, int>();
@@ -47,8 +47,8 @@ public class InventoryUI : MonoBehaviour
                 slotUI = itemContent.transform.GetChild(index).transform.GetChild(1).GetComponent<SlotUI>();
             else if(inventoryType == "Seed")
                 slotUI = seedContent.transform.GetChild(index).transform.GetChild(1).GetComponent<SlotUI>();
-            currentIndex =index;
-            slotUI.SetItem(itemDetails, itemName, isFirst,transform);
+            //currentIndex =index;
+            slotUI.SetItem(itemDetails, itemName, isFirst, inventoryType, UIManager.Instance.mainCanvas.transform);
             //slotIndex++;
         }
         else
@@ -57,7 +57,7 @@ public class InventoryUI : MonoBehaviour
                 slotUI = itemContent.transform.GetChild(index).transform.GetChild(1).GetComponent<SlotUI>();
             else if (inventoryType == "Seed")
                 slotUI = seedContent.transform.GetChild(index).transform.GetChild(1).GetComponent<SlotUI>();
-            slotUI.SetItem(itemDetails, itemName, isFirst, transform);
+            slotUI.SetItem(itemDetails, itemName, isFirst, inventoryType, UIManager.Instance.mainCanvas.transform);
         }
     }
 }

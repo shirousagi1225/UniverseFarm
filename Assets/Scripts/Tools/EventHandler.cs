@@ -32,4 +32,10 @@ public static class EventHandler
     {
         ItemDragEvent?.Invoke(seedDetails, itemName, crop);
     }
+
+    public static event Action<FarmlandName, CropStateDetails,DateTime> SetGrowTimeEvent;
+    public static void CallSetGrowTimeEvent(FarmlandName farmlandName, CropStateDetails cropStateDetails, DateTime startGrowTime)
+    {
+        SetGrowTimeEvent?.Invoke(farmlandName,cropStateDetails, startGrowTime);
+    }
 }

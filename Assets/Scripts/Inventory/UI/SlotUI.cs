@@ -15,11 +15,11 @@ public class SlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     private Transform beginDragParent;
     private Transform startParent;
 
-    public void SetItem(ItemDetails itemDetails, ItemName itemName, bool isFirst,Transform dragParent)
+    public void SetItem(ItemDetails itemDetails, ItemName itemName, bool isFirst, string inventoryType, Transform dragParent)
     {
         if (isFirst)
         {
-            //須寫判斷使用哪種UI來限制資訊初始化
+            //須寫判斷初始化哪種持有物類型的資訊(用inventoryType)
             currentItem = itemName;
             currentSeed = itemDetails;
             beginDragParent = dragParent;
@@ -27,7 +27,11 @@ public class SlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
             itemImage.sprite = itemDetails.itemSprite;
             itemImage.SetNativeSize();
         }
-        //須寫抓取持有物數量方式
+        //抓取持有物數量
+        if (itemDetails.itemCount > 99)
+            transform.parent.gameObject.transform.GetChild(2).GetComponent<Text>().text = "99+";
+        else
+            transform.parent.gameObject.transform.GetChild(2).GetComponent<Text>().text = itemDetails.itemCount.ToString();
     }
 
     public void SetEmpty()
@@ -37,25 +41,35 @@ public class SlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //須寫判斷使用哪種UI來限制拖動功能
-        startPos = transform.position;
-        startParent = transform.parent;
-        transform.SetParent(beginDragParent.parent); 
+        //判斷使用哪種UI來限制拖動功能
+        if (GameObject.Find("BackpackButton")==null)
+        {
+            startPos = transform.position;
+            startParent = transform.parent;
+            transform.SetParent(beginDragParent);
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        #if !UNITY_EDITOR && UNITY_ANDROID
-            transform.position = Input.GetTouch(0).position;
-        #else
-            transform.position = Input.mousePosition;
-        #endif
+        if (GameObject.Find("BackpackButton") == null)
+        {
+            #if !UNITY_EDITOR && UNITY_ANDROID
+                transform.position = Input.GetTouch(0).position;
+            #else
+                transform.position = Input.mousePosition;
+            #endif
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.SetParent(startParent);
-        transform.position = startPos;
-        EventHandler.CallItemDragEvent(currentSeed, currentItem, crop);
+        if (GameObject.Find("BackpackButton") == null)
+        {
+            transform.SetParent(startParent);
+            transform.SetSiblingIndex(1);
+            transform.position = startPos;
+            EventHandler.CallItemDragEvent(currentSeed, currentItem, crop);
+        }
     }
 }

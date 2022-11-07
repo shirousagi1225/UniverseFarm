@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,18 +17,23 @@ public class FarmlandManager : Singleton<FarmlandManager>
     }
 
     //生成作物方法(未完成)
-    public void CreateCrop(ItemDetails seedDetails, ItemName itemName, GameObject crop, Collider2D farmlandCD, GameObject mainCanvas)
+    public void CreateCrop(ItemDetails seedDetails, ItemName itemName, GameObject crop, Collider2D farmlandCD)
     {
+        int canPlantCount=0;
+
         Instantiate(crop, farmlandCD.gameObject.transform);
+        //測試用,正式itemName改為seedDetails
+        EventHandler.CallSetGrowTimeEvent(farmlandCD.GetComponent<Farmland>().farmlandName, cropData.GetCropStateDetails(itemName), DateTime.Now);
         farmlandCD.enabled = false;
         farmlandCD.gameObject.transform.GetChild(1).GetComponent<Crop>().SetCrop(seedDetails, itemName);
-        ////增加UIManager後須更改,並且加入判斷農地是否沒種植,等全部農地皆種植在關閉UI
-        farmlandCD.GetComponent<Farmland>().isBackpackOpen = !farmlandCD.GetComponent<Farmland>().isBackpackOpen;
-        for (int i = 0; i < mainCanvas.transform.childCount; i++)
+        //判斷農地是否沒種植,等全部農地皆種植在關閉UI
+        foreach (var farmland in FindObjectsOfType<Farmland>())
         {
-            mainCanvas.transform.GetChild(i).gameObject.SetActive(true);
+            if (farmland.canPlant)
+                canPlantCount++;
         }
-        mainCanvas.transform.GetChild(8).gameObject.SetActive(false);
+        if(canPlantCount==0)
+            UIManager.Instance.ShowSecUI();
         InventoryManager.Instance.ReduceItem(seedDetails.itemName, 1);
     }
 
@@ -55,6 +61,7 @@ public class FarmlandManager : Singleton<FarmlandManager>
     //當次產量方法(未完成)
     public int Produce(ItemName seedName)
     {
+        //須等顧客購買方法完成,判斷剩餘多少產量
         return cropData.GetCropStateDetails(seedName).produce;
     }
 }

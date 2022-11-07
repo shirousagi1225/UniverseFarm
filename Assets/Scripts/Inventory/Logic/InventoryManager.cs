@@ -11,6 +11,12 @@ public class InventoryManager : Singleton<InventoryManager>
     [SerializeField] private List<ItemName> itemList=new List<ItemName>();
     [SerializeField] private List<ItemName> seedList = new List<ItemName>();
 
+    private void Start()
+    {
+        EventHandler.CallUpdateMoneyUIEvent(itemData.GetItemDetails(ItemName.StarStone));
+        EventHandler.CallUpdateMoneyUIEvent(itemData.GetItemDetails(ItemName.Obsidian));
+    }
+
     //seedName參數於測試使用,正式將寫在增加種子方法
     public void AddItem(ItemName itemName, ItemName seedName, int itemCount)
     {
@@ -18,7 +24,6 @@ public class InventoryManager : Singleton<InventoryManager>
         {
             if (itemName.ToString()== "StarStone"|| itemName.ToString() == "Obsidian") 
             {
-                //須寫貨幣UI和事件(未完成)
                 itemData.GetItemDetails(itemName).itemCount += itemCount;
                 EventHandler.CallUpdateMoneyUIEvent(itemData.GetItemDetails(itemName));
             }
@@ -55,11 +60,8 @@ public class InventoryManager : Singleton<InventoryManager>
     {
         if (itemName.ToString() == "StarStone" || itemName.ToString() == "Obsidian")
         {
-            //須啟動購買UI
-            //須加入判斷:是否有足夠金額購買
             if (itemCount <= itemData.GetItemDetails(itemName).itemCount)
             {
-                //須寫貨幣UI和事件(未完成)
                 itemData.GetItemDetails(itemName).itemCount -= itemCount;
                 EventHandler.CallUpdateMoneyUIEvent(itemData.GetItemDetails(itemName));
             }

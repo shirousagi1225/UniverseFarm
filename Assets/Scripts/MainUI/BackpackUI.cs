@@ -18,7 +18,9 @@ public class BackpackUI : MonoBehaviour
 
     public void BackpackButton(GameObject backpackBar)
     {
+        //須寫判斷在開啟背包UI時其餘栽培系統功能皆不能使用
         isBackpackOpen = !isBackpackOpen;
+        UIManager.Instance.isMainUIOpen = isBackpackOpen;
         if (isBackpackOpen)
         {
             currentImage.sprite = changeImage;

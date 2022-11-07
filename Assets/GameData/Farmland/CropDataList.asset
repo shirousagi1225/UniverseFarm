@@ -14,112 +14,132 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CropStateDetailsList:
   - seedName: 13
-    produce: 4
+    produce: 2
+    growTimeHr: 0
+    growTimeMin: 30
     CropDetailsList:
-    - cropState: 0
-      cropStateSprite: {fileID: 0}
     - cropState: 1
       cropStateSprite: {fileID: 0}
     - cropState: 2
       cropStateSprite: {fileID: 0}
     - cropState: 3
+      cropStateSprite: {fileID: 0}
+    - cropState: 4
       cropStateSprite: {fileID: 0}
   - seedName: 14
     produce: 1
+    growTimeHr: 1
+    growTimeMin: 0
     CropDetailsList:
-    - cropState: 0
-      cropStateSprite: {fileID: 0}
     - cropState: 1
       cropStateSprite: {fileID: 0}
     - cropState: 2
       cropStateSprite: {fileID: 0}
     - cropState: 3
+      cropStateSprite: {fileID: 0}
+    - cropState: 4
       cropStateSprite: {fileID: 0}
   - seedName: 15
-    produce: 0
+    produce: 3
+    growTimeHr: 1
+    growTimeMin: 30
     CropDetailsList:
-    - cropState: 0
-      cropStateSprite: {fileID: 0}
     - cropState: 1
       cropStateSprite: {fileID: 0}
     - cropState: 2
       cropStateSprite: {fileID: 0}
     - cropState: 3
+      cropStateSprite: {fileID: 0}
+    - cropState: 4
       cropStateSprite: {fileID: 0}
   - seedName: 16
     produce: 0
+    growTimeHr: 0
+    growTimeMin: 0
     CropDetailsList:
-    - cropState: 0
-      cropStateSprite: {fileID: 0}
     - cropState: 1
       cropStateSprite: {fileID: 0}
     - cropState: 2
       cropStateSprite: {fileID: 0}
     - cropState: 3
+      cropStateSprite: {fileID: 0}
+    - cropState: 4
       cropStateSprite: {fileID: 0}
   - seedName: 17
     produce: 0
+    growTimeHr: 0
+    growTimeMin: 0
     CropDetailsList:
-    - cropState: 0
-      cropStateSprite: {fileID: 0}
     - cropState: 1
       cropStateSprite: {fileID: 0}
     - cropState: 2
       cropStateSprite: {fileID: 0}
     - cropState: 3
+      cropStateSprite: {fileID: 0}
+    - cropState: 4
       cropStateSprite: {fileID: 0}
   - seedName: 18
     produce: 0
+    growTimeHr: 0
+    growTimeMin: 0
     CropDetailsList:
-    - cropState: 0
-      cropStateSprite: {fileID: 0}
     - cropState: 1
       cropStateSprite: {fileID: 0}
     - cropState: 2
       cropStateSprite: {fileID: 0}
     - cropState: 3
+      cropStateSprite: {fileID: 0}
+    - cropState: 4
       cropStateSprite: {fileID: 0}
   - seedName: 19
     produce: 0
+    growTimeHr: 0
+    growTimeMin: 0
     CropDetailsList:
-    - cropState: 0
-      cropStateSprite: {fileID: 0}
     - cropState: 1
       cropStateSprite: {fileID: 0}
     - cropState: 2
       cropStateSprite: {fileID: 0}
     - cropState: 3
+      cropStateSprite: {fileID: 0}
+    - cropState: 4
       cropStateSprite: {fileID: 0}
   - seedName: 20
     produce: 0
+    growTimeHr: 0
+    growTimeMin: 0
     CropDetailsList:
-    - cropState: 0
-      cropStateSprite: {fileID: 0}
     - cropState: 1
       cropStateSprite: {fileID: 0}
     - cropState: 2
       cropStateSprite: {fileID: 0}
     - cropState: 3
+      cropStateSprite: {fileID: 0}
+    - cropState: 4
       cropStateSprite: {fileID: 0}
   - seedName: 21
     produce: 0
+    growTimeHr: 0
+    growTimeMin: 0
     CropDetailsList:
-    - cropState: 0
-      cropStateSprite: {fileID: 0}
     - cropState: 1
       cropStateSprite: {fileID: 0}
     - cropState: 2
       cropStateSprite: {fileID: 0}
     - cropState: 3
+      cropStateSprite: {fileID: 0}
+    - cropState: 4
       cropStateSprite: {fileID: 0}
   - seedName: 22
     produce: 1
+    growTimeHr: 2
+    growTimeMin: 0
     CropDetailsList:
-    - cropState: 0
-      cropStateSprite: {fileID: 0}
     - cropState: 1
       cropStateSprite: {fileID: 0}
     - cropState: 2
       cropStateSprite: {fileID: 0}
     - cropState: 3
+      cropStateSprite: {fileID: 0}
+    - cropState: 4
       cropStateSprite: {fileID: 0}

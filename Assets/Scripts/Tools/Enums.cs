@@ -16,5 +16,5 @@ public enum FarmlandState
 
 public enum CropState
 {
-    None, Germination, Growing, Ageing
+    None, sowing, seedling, Growing, Ageing
 }

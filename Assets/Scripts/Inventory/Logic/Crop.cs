@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,6 +11,8 @@ public class Crop : MonoBehaviour
 
     public void CropClicked()
     {
+        //測試用須以成長時間判斷是否可收成,正式改為顧客是否購買判斷
+        UIManager.Instance.ShowInfoBar();
         Harvest();
     }
 
@@ -29,5 +32,5 @@ public class Crop : MonoBehaviour
         transform.parent.GetComponent<Collider2D>().enabled = true;
     }
 
-    //狀態資訊欄顯示方法(未完成)
+    //狀態資訊欄顯示方法(可能要改為UI物件)
 }

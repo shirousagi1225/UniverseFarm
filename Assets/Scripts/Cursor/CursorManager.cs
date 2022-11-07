@@ -7,7 +7,6 @@ using UnityEngine.UIElements;
 
 public class CursorManager : MonoBehaviour
 {
-    public GameObject mainCanvas;
     private Vector3 mouseWorldPos => Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 
     private bool canClick;
@@ -57,8 +56,7 @@ public class CursorManager : MonoBehaviour
         if (canClick && dropObject.gameObject.tag == "Farmland")
         {
             Debug.Log("yes");
-            //增加UIManager後須將mainCanvas去除
-            FarmlandManager.Instance.CreateCrop(seedDetails, itemName, crop, dropObject, mainCanvas);
+            FarmlandManager.Instance.CreateCrop(seedDetails, itemName, crop, dropObject);
         }
     }
 
@@ -71,9 +69,10 @@ public class CursorManager : MonoBehaviour
                 teleport?.TeleportToScene();
                 break;
             case "Farmland":
+                //須寫判斷在開啟種植UI時其餘栽培系統功能皆不能使用
                 var farmland=clickObject.GetComponent<Farmland>();
                 if (farmland.canPlant)
-                    farmland?.PlantAction(mainCanvas);
+                    farmland?.PlantAction();
                 else
                     farmland?.FarmlandClicked();
                 //Debug.Log(farmland.canPlant);

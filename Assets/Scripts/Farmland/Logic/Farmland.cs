@@ -10,7 +10,6 @@ public class Farmland : MonoBehaviour
     private SpriteRenderer farmlandSR;
     public SpriteRenderer smallIconSR;
 
-    [HideInInspector]public bool isBackpackOpen = false;
     private bool isUnlock;
     private bool isRepair;
 
@@ -34,6 +33,7 @@ public class Farmland : MonoBehaviour
     {
         if (!isUnlock)
         {
+            //須引用判斷:是否有足夠金額購買方法
             Unlock();
             //須加入變換農地狀態方法
         }
@@ -46,7 +46,6 @@ public class Farmland : MonoBehaviour
     //解鎖方法(未完成)
     public void Unlock()
     {
-        //須引用判斷:是否有足夠金額購買方法
         isUnlock = true;
         isRepair = false;
         FarmlandManager.Instance.AddFarmland(farmlandName);
@@ -57,25 +56,9 @@ public class Farmland : MonoBehaviour
 
     //修繕方法(未完成)
 
-    public void PlantAction(GameObject mainCanvas)
+    public void PlantAction()
     {
-        isBackpackOpen = !isBackpackOpen;
-        if (isBackpackOpen)
-        {
-            for (int i=0; i<mainCanvas.transform.childCount;i++)
-            {
-                mainCanvas.transform.GetChild(i).gameObject.SetActive(false);
-            }
-            mainCanvas.transform.GetChild(8).gameObject.SetActive(true);
-        }
-        else
-        {
-            for (int i = 0; i < mainCanvas.transform.childCount; i++)
-            {
-                mainCanvas.transform.GetChild(i).gameObject.SetActive(true);
-            }
-            mainCanvas.transform.GetChild(8).gameObject.SetActive(false);
-        }
+        UIManager.Instance.ShowSecUI();
     }
 
     //須寫變換小圖示狀態方法(未完成)
