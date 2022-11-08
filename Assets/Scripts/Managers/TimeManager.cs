@@ -9,12 +9,15 @@ public class TimeManager : Singleton<TimeManager>
 {
     public GameObject timeBar;
 
-    private Dictionary<FarmlandName, DateTime> startGrowTimeDict = new Dictionary<FarmlandName, DateTime>();
     private Dictionary<FarmlandName, TimeSpan> growTimeDict = new Dictionary<FarmlandName, TimeSpan>();
+    private FarmlandName currentFarmland;
+    private bool canShowGrowTime;
+    private Text currentGrowTimeText;
 
     private void OnEnable()
     {
         EventHandler.SetGrowTimeEvent += OnSetGrowTimeEvent;
+        EventHandler.UpdateGrowTimeEvent+= OnUpdateGrowTimeEvent;
         StartCoroutine(GrowCountDown());
         StartCoroutine(CurrentTime());
     }
@@ -22,12 +25,19 @@ public class TimeManager : Singleton<TimeManager>
     private void OnDisable()
     {
         EventHandler.SetGrowTimeEvent -= OnSetGrowTimeEvent;
+        EventHandler.UpdateGrowTimeEvent -= OnUpdateGrowTimeEvent;
     }
 
-    private void OnSetGrowTimeEvent(FarmlandName farmlandName,CropStateDetails cropStateDetails, DateTime startGrowTime)
+    private void OnSetGrowTimeEvent(FarmlandName farmlandName,CropStateDetails cropStateDetails)
     {
-        startGrowTimeDict.Add(farmlandName, startGrowTime);
         growTimeDict.Add(farmlandName,new TimeSpan(cropStateDetails.growTimeHr, cropStateDetails.growTimeMin,0));
+    }
+
+    private void OnUpdateGrowTimeEvent(FarmlandName farmlandName, bool isInfoBarOpen, Text growTime)
+    {
+        currentFarmland = farmlandName;
+        canShowGrowTime = isInfoBarOpen;
+        currentGrowTimeText = growTime;
     }
 
     //顯示當前時間
@@ -44,22 +54,22 @@ public class TimeManager : Singleton<TimeManager>
     //作物生長時間倒數(未完成)
     private IEnumerator GrowCountDown()
     {
-        while (true) 
+        while (true)
         {
             foreach (var farmland in FindObjectsOfType<Farmland>())
             {
-                if (startGrowTimeDict.ContainsKey(farmland.farmlandName))
+                if (growTimeDict.ContainsKey(farmland.farmlandName))
                 {
                     //須加入判斷是否倒數完畢
-                    var currentGrowTime = DateTime.Now.Subtract(startGrowTimeDict[farmland.farmlandName]).Duration();
-                    var lastGrowTime=growTimeDict[farmland.farmlandName] - new TimeSpan((int)currentGrowTime.TotalHours, (int)currentGrowTime.TotalMinutes, (int)currentGrowTime.TotalSeconds);
-                    if (GameObject.Find("InfoBar") != null)
-                    {
-                        GameObject.Find("InfoBar").transform.GetChild(0).GetComponent<Text>().text = lastGrowTime.ToString();
-                        Debug.Log(lastGrowTime.ToString());
-                    }
+                    growTimeDict[farmland.farmlandName] -= new TimeSpan(0, 0, 1);
+                    Debug.Log(growTimeDict[farmland.farmlandName].ToString());
                 }
             }
+
+            //測試用,正式if判斷只需要canShowGrowTime
+            if (canShowGrowTime&& growTimeDict.ContainsKey(currentFarmland))
+                currentGrowTimeText.text = growTimeDict[currentFarmland].ToString();
+
             yield return new WaitForSeconds(1);
         }
     }

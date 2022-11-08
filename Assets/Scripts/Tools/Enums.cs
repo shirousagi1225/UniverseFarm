@@ -6,7 +6,7 @@ public enum ItemName
 
 public enum FarmlandName
 {
-    Farmland01, Farmland02, Farmland03, Farmland04, Farmland05, Farmland06, Farmland07, Farmland08, Farmland09, Farmland10
+    None,Farmland01, Farmland02, Farmland03, Farmland04, Farmland05, Farmland06, Farmland07, Farmland08, Farmland09, Farmland10
 }
 
 public enum FarmlandState

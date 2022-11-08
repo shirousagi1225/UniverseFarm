@@ -20,19 +20,19 @@ MonoBehaviour:
     itemSprite: {fileID: 21300000, guid: 9919946f40a375c4aafa66076c14910b, type: 3}
     itemCount: 200
   - itemName: 3
-    itemSprite: {fileID: 21300000, guid: dfb30bbd4cfd88246aae5aa0b15342d7, type: 3}
+    itemSprite: {fileID: 21300000, guid: 82fd9fbe61f71824ba04a84dbe2a2bb0, type: 3}
     itemCount: 0
   - itemName: 4
     itemSprite: {fileID: 21300000, guid: 6f12d248c58a02249811b3a69478dd77, type: 3}
     itemCount: 0
   - itemName: 5
-    itemSprite: {fileID: 21300000, guid: 30d8ba7e904b505418a62f273760a2ce, type: 3}
+    itemSprite: {fileID: 21300000, guid: ac203a7be9a8da7468c9e86be70374f0, type: 3}
     itemCount: 0
   - itemName: 6
-    itemSprite: {fileID: 21300000, guid: 396c0013d25b85b41a37102fd8c838dd, type: 3}
+    itemSprite: {fileID: 21300000, guid: 36d5122c06de65942b99bbdb011dad11, type: 3}
     itemCount: 0
   - itemName: 7
-    itemSprite: {fileID: 21300000, guid: 1fe5719a76065f844b9d728a7949dea5, type: 3}
+    itemSprite: {fileID: 21300000, guid: 2d32e28103a4ea1459b28bdd865cf96f, type: 3}
     itemCount: 0
   - itemName: 8
     itemSprite: {fileID: 21300000, guid: 7934ef9744294bb4c8b4e2251a2013e8, type: 3}
@@ -47,5 +47,5 @@ MonoBehaviour:
     itemSprite: {fileID: 21300000, guid: 026104a737a0c2445b727426b4d2ec72, type: 3}
     itemCount: 0
   - itemName: 12
-    itemSprite: {fileID: 21300000, guid: 2d32e28103a4ea1459b28bdd865cf96f, type: 3}
+    itemSprite: {fileID: 21300000, guid: dfb30bbd4cfd88246aae5aa0b15342d7, type: 3}
     itemCount: 0

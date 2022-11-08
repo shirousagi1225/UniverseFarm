@@ -22,7 +22,7 @@ public class Farmland : MonoBehaviour
     {
         get
         {
-            if (!isUnlock || isRepair || transform.childCount>1)
+            if (!isUnlock || isRepair || transform.childCount>2)
                 return false;
             else
                 return true;

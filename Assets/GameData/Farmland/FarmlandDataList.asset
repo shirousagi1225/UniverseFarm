@@ -13,33 +13,73 @@ MonoBehaviour:
   m_Name: FarmlandDataList
   m_EditorClassIdentifier: 
   farmlandDetailsList:
-  - farmlandName: 0
-    isUnLock: 0
-    isPlant: 0
   - farmlandName: 1
-    isUnLock: 0
     isPlant: 0
+    farmlandState: 0
+    farmlandStateSprite: {fileID: 0}
+    seedName: 0
+    cropState: 0
+    cropStateSprite: {fileID: 0}
   - farmlandName: 2
-    isUnLock: 0
     isPlant: 0
+    farmlandState: 0
+    farmlandStateSprite: {fileID: 0}
+    seedName: 0
+    cropState: 0
+    cropStateSprite: {fileID: 0}
   - farmlandName: 3
-    isUnLock: 0
     isPlant: 0
+    farmlandState: 0
+    farmlandStateSprite: {fileID: 0}
+    seedName: 0
+    cropState: 0
+    cropStateSprite: {fileID: 0}
   - farmlandName: 4
-    isUnLock: 0
     isPlant: 0
+    farmlandState: 0
+    farmlandStateSprite: {fileID: 0}
+    seedName: 0
+    cropState: 0
+    cropStateSprite: {fileID: 0}
   - farmlandName: 5
-    isUnLock: 0
     isPlant: 0
+    farmlandState: 0
+    farmlandStateSprite: {fileID: 0}
+    seedName: 0
+    cropState: 0
+    cropStateSprite: {fileID: 0}
   - farmlandName: 6
-    isUnLock: 0
     isPlant: 0
+    farmlandState: 0
+    farmlandStateSprite: {fileID: 0}
+    seedName: 0
+    cropState: 0
+    cropStateSprite: {fileID: 0}
   - farmlandName: 7
-    isUnLock: 0
     isPlant: 0
+    farmlandState: 0
+    farmlandStateSprite: {fileID: 0}
+    seedName: 0
+    cropState: 0
+    cropStateSprite: {fileID: 0}
   - farmlandName: 8
-    isUnLock: 0
     isPlant: 0
+    farmlandState: 0
+    farmlandStateSprite: {fileID: 0}
+    seedName: 0
+    cropState: 0
+    cropStateSprite: {fileID: 0}
   - farmlandName: 9
-    isUnLock: 0
     isPlant: 0
+    farmlandState: 0
+    farmlandStateSprite: {fileID: 0}
+    seedName: 0
+    cropState: 0
+    cropStateSprite: {fileID: 0}
+  - farmlandName: 10
+    isPlant: 0
+    farmlandState: 0
+    farmlandStateSprite: {fileID: 0}
+    seedName: 0
+    cropState: 0
+    cropStateSprite: {fileID: 0}

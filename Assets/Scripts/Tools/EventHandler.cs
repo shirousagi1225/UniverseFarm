@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public static class EventHandler
 {
@@ -33,9 +34,15 @@ public static class EventHandler
         ItemDragEvent?.Invoke(seedDetails, itemName, crop);
     }
 
-    public static event Action<FarmlandName, CropStateDetails,DateTime> SetGrowTimeEvent;
-    public static void CallSetGrowTimeEvent(FarmlandName farmlandName, CropStateDetails cropStateDetails, DateTime startGrowTime)
+    public static event Action<FarmlandName, CropStateDetails> SetGrowTimeEvent;
+    public static void CallSetGrowTimeEvent(FarmlandName farmlandName, CropStateDetails cropStateDetails)
     {
-        SetGrowTimeEvent?.Invoke(farmlandName,cropStateDetails, startGrowTime);
+        SetGrowTimeEvent?.Invoke(farmlandName,cropStateDetails);
+    }
+
+    public static event Action<FarmlandName, bool, Text> UpdateGrowTimeEvent;
+    public static void CallUpdateGrowTimeEvent(FarmlandName farmlandName, bool isInfoBarOpen, Text growTime)
+    {
+        UpdateGrowTimeEvent?.Invoke(farmlandName, isInfoBarOpen, growTime);
     }
 }

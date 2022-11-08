@@ -23,9 +23,9 @@ public class FarmlandManager : Singleton<FarmlandManager>
 
         Instantiate(crop, farmlandCD.gameObject.transform);
         //代刚ノ,タΑitemNameэseedDetails
-        EventHandler.CallSetGrowTimeEvent(farmlandCD.GetComponent<Farmland>().farmlandName, cropData.GetCropStateDetails(itemName), DateTime.Now);
+        EventHandler.CallSetGrowTimeEvent(farmlandCD.GetComponent<Farmland>().farmlandName, cropData.GetCropStateDetails(itemName));
         farmlandCD.enabled = false;
-        farmlandCD.gameObject.transform.GetChild(1).GetComponent<Crop>().SetCrop(seedDetails, itemName);
+        farmlandCD.gameObject.transform.GetChild(2).GetComponent<Crop>().SetCrop(seedDetails, itemName);
         //耞笰琌⊿贺从,单场笰贺从闽超UI
         foreach (var farmland in FindObjectsOfType<Farmland>())
         {
