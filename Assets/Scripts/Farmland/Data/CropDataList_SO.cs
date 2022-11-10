@@ -36,4 +36,5 @@ public class CropDetails
 {
     public CropState cropState;
     public Sprite cropStateSprite;
+    public TimeSpan cropStageTime;
 }

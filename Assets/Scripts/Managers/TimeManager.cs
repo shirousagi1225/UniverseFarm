@@ -61,6 +61,8 @@ public class TimeManager : Singleton<TimeManager>
                 if (growTimeDict.ContainsKey(farmland.farmlandName))
                 {
                     //須加入判斷是否倒數完畢
+                    FarmlandManager.Instance.SetCropState(farmland.transform.GetChild(2).GetComponent<SpriteRenderer>(), 
+                        farmland.transform.GetChild(2).GetComponent<Crop>().seedName, growTimeDict[farmland.farmlandName]);
                     growTimeDict[farmland.farmlandName] -= new TimeSpan(0, 0, 1);
                     Debug.Log(growTimeDict[farmland.farmlandName].ToString());
                 }

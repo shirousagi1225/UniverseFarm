@@ -24,6 +24,7 @@ public class Crop : MonoBehaviour
         //測試用,正式seedName跟cropName的值對調
         seedName = itemName;
         cropName = seedDetails.itemName;
+        //測試用,正式不需要加
         GetComponent<SpriteRenderer>().sprite = seedDetails.itemSprite;
     }
 

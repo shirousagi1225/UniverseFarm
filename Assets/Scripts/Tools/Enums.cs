@@ -16,5 +16,10 @@ public enum FarmlandState
 
 public enum CropState
 {
-    None, sowing, seedling, Growing, Ageing
+    None, Sowing, Seeding, Growing, Ageing
+}
+
+public enum ClientName
+{
+    None
 }
