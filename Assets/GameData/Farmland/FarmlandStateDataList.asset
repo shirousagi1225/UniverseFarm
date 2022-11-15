@@ -18,14 +18,14 @@ MonoBehaviour:
   - farmlandState: 2
     farmlandStateSprite: {fileID: 0}
   - farmlandState: 3
-    farmlandStateSprite: {fileID: 0}
+    farmlandStateSprite: {fileID: 21300000, guid: f906f04d582d8e04fadcee1ac7b68529, type: 3}
   - farmlandState: 4
-    farmlandStateSprite: {fileID: 0}
+    farmlandStateSprite: {fileID: 21300000, guid: d62114cb8b15ad6409e064659bd445be, type: 3}
   - farmlandState: 5
-    farmlandStateSprite: {fileID: 0}
+    farmlandStateSprite: {fileID: 21300000, guid: 04b8e1b940ebe594eb056af0ebff83b8, type: 3}
   - farmlandState: 6
-    farmlandStateSprite: {fileID: 0}
+    farmlandStateSprite: {fileID: 21300000, guid: 2bf8eb27d5696c04290a70657da0be33, type: 3}
   - farmlandState: 7
-    farmlandStateSprite: {fileID: 0}
+    farmlandStateSprite: {fileID: 21300000, guid: bcd8e07d233b4ee43b3106d402a25598, type: 3}
   - farmlandState: 8
-    farmlandStateSprite: {fileID: 0}
+    farmlandStateSprite: {fileID: 21300000, guid: c041677b6fda8cf4599e0ac4278f70d1, type: 3}

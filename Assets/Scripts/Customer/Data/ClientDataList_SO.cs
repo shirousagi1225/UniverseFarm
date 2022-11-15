@@ -11,11 +11,14 @@ public class ClientDataList_SO : ScriptableObject
     {
         return clientDetailsList.Find(i => i.clientName == clientName);
     }
+}
 
-    [System.Serializable]
-    public class ClientDetails
-    {
-        public ClientName clientName;
-        public Sprite clientSprite;
-    }
+[System.Serializable]
+public class ClientDetails
+{
+    public ClientName clientName;
+    public Sprite clientSprite;
+    public float walkSpeed;
+    public int stateTime;
+    public float occurrence;
 }

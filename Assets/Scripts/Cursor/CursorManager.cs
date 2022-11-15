@@ -15,6 +15,7 @@ public class CursorManager : MonoBehaviour
     {
         canClick = ObjectAtMousePosition();
         CameraManager.Instance.IsClick(canClick);
+        //Debug.Log(ObjectAtMousePosition());
 
         //桌機：判斷是否點擊UI（為了區別是單純的點擊螢幕還是要和UI互動)
         if (!EventSystem.current.IsPointerOverGameObject())
@@ -79,15 +80,20 @@ public class CursorManager : MonoBehaviour
                 break;
             case "Crop":
                 //測試階段：收成方法寫在Crop.cs
+                //正式階段：收成方法寫在顧客程式
                 var crop = clickObject.GetComponent<Crop>();
                 crop?.CropClicked();
-                //正式階段：收成方法寫在小圖示程式
+                break;
+            case "Seed":
+                var seed = clickObject.GetComponent<Seed>();
+                seed?.SeedClicked();
                 break;
         }
     }
 
     private Collider2D ObjectAtMousePosition()
     {
-        return Physics2D.OverlapPoint(mouseWorldPos);
+        //增加Layer參數解決邊界檢測碰撞框干擾點擊的問題
+        return Physics2D.OverlapPoint(mouseWorldPos,1<<LayerMask.NameToLayer("ClickDetect"));
     }
 }

@@ -19,9 +19,14 @@ public class SlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     {
         if (isFirst)
         {
-            //須寫判斷初始化哪種持有物類型的資訊(用inventoryType)
-            currentItem = itemName;
-            currentSeed = itemDetails;
+            //判斷初始化哪種持有物類型的資訊(用inventoryType)
+            if(inventoryType == "Item")
+                currentSeed = itemDetails;
+            else
+            {
+                currentItem = itemName;
+                currentSeed = itemDetails;
+            }
             beginDragParent = dragParent;
 
             itemImage.sprite = itemDetails.itemSprite;

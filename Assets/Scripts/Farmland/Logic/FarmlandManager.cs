@@ -11,23 +11,68 @@ public class FarmlandManager : Singleton<FarmlandManager>
 
     [SerializeField] private List<FarmlandName> farmlandList = new List<FarmlandName>();
 
-    public FarmlandDetails GetFarmlandInfo(FarmlandName farmlandName)
+    private void OnEnable()
+    {
+        EventHandler.UpdateFarmlandStateEvent += OnUpdateFarmlandStateEvent;
+    }
+
+    private void OnDisable()
+    {
+        EventHandler.UpdateFarmlandStateEvent -= OnUpdateFarmlandStateEvent;
+    }
+
+    //變換農地狀態事件(未完成)
+    private void OnUpdateFarmlandStateEvent(Farmland currentFarm)
+    {
+        //農田管理(解鎖、修繕)
+        if (currentFarm.canPlant)
+        {
+            //農田提示(可種植)
+            currentFarm.transform.GetChild(0).gameObject.SetActive(true);
+            currentFarm.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = farmlandStateData.GetFarmlandStateDetails(FarmlandState.Plant).farmlandStateSprite;
+        }
+        else if (currentFarm.transform.GetChild(2).GetComponent<Crop>().growthStage == 3)
+        {
+            //農田提示(可收成)
+            currentFarm.transform.GetChild(0).gameObject.SetActive(true);
+            currentFarm.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = farmlandStateData.GetFarmlandStateDetails(FarmlandState.Harvest).farmlandStateSprite;
+            //Debug.Log(currentFarm.transform.GetChild(2).GetComponent<Crop>().growthStage);
+        }
+        else if(currentFarm.transform.GetChild(2).GetComponent<Crop>().growthStage == 4)
+        {
+            //農田提示(可翻土)
+            currentFarm.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = farmlandStateData.GetFarmlandStateDetails(FarmlandState.Dig).farmlandStateSprite;
+            EventHandler.CallUpdateHintUIEvent(currentFarm, currentFarm.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
+        }
+        else if (AlgorithmManager.Instance.TriggerAbnormalState())
+        {
+            //作物狀況提示（缺水、害蟲、施肥）：以機率控制
+            currentFarm.transform.GetChild(0).gameObject.SetActive(true);
+            currentFarm.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = farmlandStateData.GetFarmlandStateDetails(AlgorithmManager.Instance.ChooseAbnormalState()).farmlandStateSprite;
+            EventHandler.CallUpdateHintUIEvent(currentFarm, currentFarm.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
+            Debug.Log("異常狀態");
+        }
+        //Debug.Log(currentFarm.transform.GetChild(0).gameObject.activeInHierarchy);
+    }
+
+    /*public FarmlandDetails GetFarmlandInfo(FarmlandName farmlandName)
     {
         return farmlandData.GetFarmlandDetails(farmlandName);
-    }
+    }*/
 
     //生成作物方法(未完成)
     public void CreateCrop(ItemDetails seedDetails, ItemName itemName, GameObject crop, Collider2D farmlandCD)
     {
         int canPlantCount=0;
 
+        farmlandCD.transform.GetChild(0).gameObject.SetActive(false);
         Instantiate(crop, farmlandCD.gameObject.transform);
-        //測試用,正式itemName改為seedDetails
-        SetCropStageTime(itemName, cropData.GetCropStateDetails(itemName));
-        //測試用,正式itemName改為seedDetails
-        EventHandler.CallSetGrowTimeEvent(farmlandCD.GetComponent<Farmland>().farmlandName, cropData.GetCropStateDetails(itemName));
         farmlandCD.enabled = false;
         farmlandCD.gameObject.transform.GetChild(2).GetComponent<Crop>().SetCrop(seedDetails, itemName);
+        //測試用,正式itemName改為seedDetails(已修改)
+        SetCropStageTime(seedDetails.itemName, cropData.GetCropStateDetails(seedDetails.itemName));
+        //測試用,正式itemName改為seedDetails(已修改)
+        EventHandler.CallSetGrowTimeEvent(farmlandCD.GetComponent<Farmland>().farmlandName, cropData.GetCropStateDetails(seedDetails.itemName));
         //判斷農地是否沒種植,等全部農地皆種植在關閉UI
         foreach (var farmland in FindObjectsOfType<Farmland>())
         {
@@ -37,14 +82,6 @@ public class FarmlandManager : Singleton<FarmlandManager>
         if(canPlantCount==0)
             UIManager.Instance.ShowSecUI();
         InventoryManager.Instance.ReduceItem(seedDetails.itemName, 1);
-    }
-
-    public void SetFarmlandState(FarmlandName farmlandName)
-    {
-        //變換農地狀態
-        //農田管理(解鎖、修繕)
-        //作物狀況提示（缺水、害蟲、施肥）：以機率控制
-        //農田提示（可翻土、可種植、可收成）
     }
 
     //設定作物各成長階段時間方法
@@ -73,15 +110,24 @@ public class FarmlandManager : Singleton<FarmlandManager>
     public void SetCropState(SpriteRenderer currentCropSR, ItemName seedName, TimeSpan currentGrowTime)
     {
         //Debug.Log(seedName);
-        //可改善：不每秒重複設置物件圖片,只在最初達成條件設置
-        if (currentGrowTime <= cropData.GetCropDetails(seedName, CropState.Ageing).cropStageTime)
+        if (currentGrowTime <= cropData.GetCropDetails(seedName, CropState.Ageing).cropStageTime && currentCropSR.GetComponentInParent<Crop>().growthStage < 3)
+        {
             currentCropSR.sprite = cropData.GetCropDetails(seedName, CropState.Ageing).cropStateSprite;
-        else if(currentGrowTime <= cropData.GetCropDetails(seedName, CropState.Growing).cropStageTime)
+            currentCropSR.GetComponentInParent<Crop>().growthStage = 3;
+            //Debug.Log(currentCropSR.GetComponentInParent<Crop>().growthStage);
+        }
+        else if (currentGrowTime <= cropData.GetCropDetails(seedName, CropState.Growing).cropStageTime && currentCropSR.GetComponentInParent<Crop>().growthStage < 2)
+        {
             currentCropSR.sprite = cropData.GetCropDetails(seedName, CropState.Growing).cropStateSprite;
-        else if(currentGrowTime <= cropData.GetCropDetails(seedName, CropState.Seeding).cropStageTime)
+            currentCropSR.GetComponentInParent<Crop>().growthStage = 2;
+            //Debug.Log(currentCropSR.GetComponentInParent<Crop>().growthStage);
+        }
+        else if (currentGrowTime <= cropData.GetCropDetails(seedName, CropState.Seeding).cropStageTime && currentCropSR.GetComponentInParent<Crop>().growthStage < 1)
+        {
             currentCropSR.sprite = cropData.GetCropDetails(seedName, CropState.Seeding).cropStateSprite;
-        else
-            currentCropSR.sprite = cropData.GetCropDetails(seedName, CropState.Sowing).cropStateSprite;
+            currentCropSR.GetComponentInParent<Crop>().growthStage = 1;
+            //Debug.Log(currentCropSR.GetComponentInParent<Crop>().growthStage);
+        }
     }
 
     public void AddFarmland(FarmlandName farmlandName)

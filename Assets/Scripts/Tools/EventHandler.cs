@@ -45,4 +45,16 @@ public static class EventHandler
     {
         UpdateGrowTimeEvent?.Invoke(farmlandName, isInfoBarOpen, growTime);
     }
+
+    public static event Action<Farmland> UpdateFarmlandStateEvent;
+    public static void CallUpdateFarmlandStateEvent(Farmland farmland)
+    {
+        UpdateFarmlandStateEvent?.Invoke(farmland);
+    }
+
+    public static event Action<Farmland, Sprite> UpdateHintUIEvent;
+    public static void CallUpdateHintUIEvent(Farmland farmland, Sprite farmlandStateSprite)
+    {
+        UpdateHintUIEvent?.Invoke(farmland, farmlandStateSprite);
+    }
 }

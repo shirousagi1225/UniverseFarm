@@ -8,7 +8,6 @@ public class Farmland : MonoBehaviour
     public FarmlandName farmlandName;
 
     private SpriteRenderer farmlandSR;
-    public SpriteRenderer smallIconSR;
 
     private bool isUnlock;
     private bool isRepair;
@@ -35,7 +34,9 @@ public class Farmland : MonoBehaviour
         {
             //須引用判斷:是否有足夠金額購買方法
             Unlock();
-            //須加入變換農地狀態方法
+            //須呼叫變換農地狀態事件(解鎖)
+            //呼叫變換農地狀態事件(可翻土)
+            EventHandler.CallUpdateFarmlandStateEvent(GetComponent<Farmland>());
         }
         else if (isRepair)
         {
@@ -49,7 +50,7 @@ public class Farmland : MonoBehaviour
         isUnlock = true;
         isRepair = false;
         FarmlandManager.Instance.AddFarmland(farmlandName);
-        smallIconSR.gameObject.SetActive(true);
+        transform.GetChild(0).gameObject.SetActive(true);
         //測試用,正式刪除
         GetComponent<Collider2D>().enabled = false;
     }
@@ -58,8 +59,7 @@ public class Farmland : MonoBehaviour
 
     public void PlantAction()
     {
+        //需判斷是否翻過土,有翻過才能開啟種植UI
         UIManager.Instance.ShowSecUI();
     }
-
-    //須寫變換小圖示狀態方法(未完成)
 }

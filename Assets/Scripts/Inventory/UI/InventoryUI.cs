@@ -41,12 +41,17 @@ public class InventoryUI : MonoBehaviour
         }
         else if(isFirst)
         {
-            Instantiate(itemUnit, itemContent.transform);
             //slotDict.Add(index, slotIndex);
             if (inventoryType== "Item")
+            {
+                Instantiate(itemUnit, itemContent.transform);
                 slotUI = itemContent.transform.GetChild(index).transform.GetChild(1).GetComponent<SlotUI>();
+            } 
             else if(inventoryType == "Seed")
+            {
+                Instantiate(itemUnit, seedContent.transform);
                 slotUI = seedContent.transform.GetChild(index).transform.GetChild(1).GetComponent<SlotUI>();
+            }
             //currentIndex =index;
             slotUI.SetItem(itemDetails, itemName, isFirst, inventoryType, UIManager.Instance.mainCanvas.transform);
             //slotIndex++;

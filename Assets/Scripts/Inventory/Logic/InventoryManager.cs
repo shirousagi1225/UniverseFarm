@@ -17,8 +17,8 @@ public class InventoryManager : Singleton<InventoryManager>
         EventHandler.CallUpdateMoneyUIEvent(itemData.GetItemDetails(ItemName.Obsidian));
     }
 
-    //seedName把计代刚ㄏノ,タΑ盢糶糤贺よ猭
-    public void AddItem(ItemName itemName, ItemName seedName, int itemCount)
+    //seedName把计代刚ㄏノ,タΑ盢糶糤贺よ猭(э)
+    public void AddItem(ItemName itemName, int itemCount)
     {
         if (!itemList.Contains(itemName))
         {
@@ -31,27 +31,29 @@ public class InventoryManager : Singleton<InventoryManager>
             {
                 itemList.Add(itemName);
                 itemData.GetItemDetails(itemName).itemCount += itemCount;
-                EventHandler.CallUpdateInventoryUIEvent(itemData.GetItemDetails(itemName), seedName, itemList.Count-1,true,"Item");
+                EventHandler.CallUpdateInventoryUIEvent(itemData.GetItemDetails(itemName), ItemName.None, itemList.Count-1,true,"Item");
             }
         }
         else
         {
             itemData.GetItemDetails(itemName).itemCount += itemCount;
-            EventHandler.CallUpdateInventoryUIEvent(itemData.GetItemDetails(itemName), seedName, itemList.FindIndex(i => i == itemName), false, "Item");
+            EventHandler.CallUpdateInventoryUIEvent(itemData.GetItemDetails(itemName), ItemName.None, itemList.FindIndex(i => i == itemName), false, "Item");
         }
     }
 
     //糤贺よ猭(ゼЧΘ)
-    public void AddSeed(ItemName seedName, int seedCount)
+    public void AddSeed(ItemName seedName, ItemName itemName, int seedCount)
     {
         if (!seedList.Contains(seedName))
         {
             seedList.Add(seedName);
             seedData.GetItemDetails(seedName).itemCount += seedCount;
+            EventHandler.CallUpdateInventoryUIEvent(seedData.GetItemDetails(seedName), itemName, seedList.Count - 1, true, "Seed");
         }
         else
         {
             seedData.GetItemDetails(seedName).itemCount += seedCount;
+            EventHandler.CallUpdateInventoryUIEvent(seedData.GetItemDetails(seedName), itemName, seedList.FindIndex(i => i == seedName), false, "Seed");
         }
     }
 

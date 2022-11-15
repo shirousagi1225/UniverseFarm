@@ -53,7 +53,7 @@ MonoBehaviour:
     - cropState: 4
       cropStateSprite: {fileID: 0}
   - seedName: 16
-    produce: 0
+    produce: 1
     growTimeHr: 0
     growTimeMin: 0
     CropDetailsList:
@@ -66,7 +66,7 @@ MonoBehaviour:
     - cropState: 4
       cropStateSprite: {fileID: 0}
   - seedName: 17
-    produce: 0
+    produce: 1
     growTimeHr: 0
     growTimeMin: 0
     CropDetailsList:
@@ -79,7 +79,7 @@ MonoBehaviour:
     - cropState: 4
       cropStateSprite: {fileID: 0}
   - seedName: 18
-    produce: 0
+    produce: 1
     growTimeHr: 0
     growTimeMin: 0
     CropDetailsList:
@@ -92,7 +92,7 @@ MonoBehaviour:
     - cropState: 4
       cropStateSprite: {fileID: 0}
   - seedName: 19
-    produce: 0
+    produce: 1
     growTimeHr: 0
     growTimeMin: 0
     CropDetailsList:
@@ -105,7 +105,7 @@ MonoBehaviour:
     - cropState: 4
       cropStateSprite: {fileID: 0}
   - seedName: 20
-    produce: 0
+    produce: 1
     growTimeHr: 0
     growTimeMin: 0
     CropDetailsList:
@@ -118,7 +118,7 @@ MonoBehaviour:
     - cropState: 4
       cropStateSprite: {fileID: 0}
   - seedName: 21
-    produce: 0
+    produce: 1
     growTimeHr: 0
     growTimeMin: 0
     CropDetailsList:

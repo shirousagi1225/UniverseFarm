@@ -17,10 +17,10 @@ public class FarmlandDataList_SO : ScriptableObject
 public class FarmlandDetails
 {
     public FarmlandName farmlandName;
-    public bool isPlant;
+    /*public bool isPlant;
     public FarmlandState farmlandState;
     public Sprite farmlandStateSprite;
     public ItemName seedName;
     public CropState cropState;
-    public Sprite cropStateSprite;
+    public Sprite cropStateSprite;*/
 }

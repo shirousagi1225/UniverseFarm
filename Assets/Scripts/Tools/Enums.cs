@@ -6,7 +6,7 @@ public enum ItemName
 
 public enum FarmlandName
 {
-    None,Farmland01, Farmland02, Farmland03, Farmland04, Farmland05, Farmland06, Farmland07, Farmland08, Farmland09, Farmland10
+    None,Farmland01, Farmland02, Farmland03, Farmland04, Farmland05, Farmland06, Farmland07, Farmland08, Farmland09, Farmland10, Farmland11, Farmland12
 }
 
 public enum FarmlandState
@@ -21,5 +21,5 @@ public enum CropState
 
 public enum ClientName
 {
-    None
+    None, ¦ãµ·µX, ¨È§B¯S
 }

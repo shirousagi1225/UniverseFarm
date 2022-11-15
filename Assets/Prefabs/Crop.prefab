@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5338566736873998217}
   - component: {fileID: 5338566736873998220}
   - component: {fileID: 5338566736873998223}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Crop
   m_TagString: Crop
   m_Icon: {fileID: 0}
@@ -72,10 +72,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1424814413
-  m_SortingLayer: 3
+  m_SortingLayerID: 160453667
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3cc500286ac17ae4ab0e94d3532fc4fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f0153458d16eb764b9d79b13eb48b01f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,7 +117,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.29}
+    oldSize: {x: 1.14, y: 1.09}
     newSize: {x: 1, y: 1.29}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
