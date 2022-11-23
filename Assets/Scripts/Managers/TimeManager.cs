@@ -37,7 +37,7 @@ public class TimeManager : Singleton<TimeManager>
 
     private void OnSetGrowTimeEvent(FarmlandName farmlandName, CropStateDetails cropStateDetails)
     {
-        growTimeDict.Add(farmlandName, new TimeSpan(cropStateDetails.growTimeHr, cropStateDetails.growTimeMin, 0));
+        growTimeDict.Add(farmlandName, new TimeSpan(0,cropStateDetails.growTimeMin, cropStateDetails.growTimeSec));
     }
 
     private void OnUpdateGrowTimeEvent(FarmlandName farmlandName, bool isInfoBarOpen, Text growTime)

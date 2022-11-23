@@ -41,7 +41,7 @@ public class UIManager : Singleton<UIManager>
 
     //可改善：透過事件讓個別UI可以根據自己需求使用方法
     //須加入參數用於判斷該開啟哪個UI
-    //須限制只開啟種子類型的物品欄
+    //需判斷開啟種植UI是點擊農地,關閉則是點擊場景(只有單點場景才會關閉,有進行相機移動則不會)
     public void ShowSecUI()
     {
         if (canOpenSecUI)
@@ -55,6 +55,7 @@ public class UIManager : Singleton<UIManager>
                         mainCanvas.transform.GetChild(i).gameObject.SetActive(false);
                 }
                 mainCanvas.transform.GetChild(9).gameObject.SetActive(isSecUIOpen);
+                //限制只開啟種子類型的物品欄
                 mainCanvas.transform.GetChild(9).GetChild(0).gameObject.SetActive(!isSecUIOpen);
                 mainCanvas.transform.GetChild(9).GetChild(1).gameObject.SetActive(isSecUIOpen);
             }

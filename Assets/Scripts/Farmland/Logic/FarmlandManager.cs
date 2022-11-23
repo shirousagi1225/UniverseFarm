@@ -87,20 +87,20 @@ public class FarmlandManager : Singleton<FarmlandManager>
     //設定作物各成長階段時間方法
     private void SetCropStageTime(ItemName seedName, CropStateDetails cropStateDetails)
     {
-        if (cropData.GetCropDetails(seedName, CropState.Sowing).cropStageTime!= new TimeSpan(cropStateDetails.growTimeHr, cropStateDetails.growTimeMin, 0)) 
+        if (cropData.GetCropDetails(seedName, CropState.Sowing).cropStageTime!= new TimeSpan(0,cropStateDetails.growTimeMin, cropStateDetails.growTimeSec)) 
         {
-            int stageTime = ((cropStateDetails.growTimeHr * 60 + cropStateDetails.growTimeMin) / 3);
+            int stageTime = ((cropStateDetails.growTimeMin * 60 + cropStateDetails.growTimeSec) / 3);
 
-            cropData.GetCropDetails(seedName, CropState.Sowing).cropStageTime = new TimeSpan(cropStateDetails.growTimeHr, cropStateDetails.growTimeMin, 0);
+            cropData.GetCropDetails(seedName, CropState.Sowing).cropStageTime = new TimeSpan(0,cropStateDetails.growTimeMin, cropStateDetails.growTimeSec);
             if (stageTime * 2 >= 60)
-                cropData.GetCropDetails(seedName, CropState.Seeding).cropStageTime = new TimeSpan((stageTime * 2) / 60, (stageTime * 2) % 60, 0);
+                cropData.GetCropDetails(seedName, CropState.Seeding).cropStageTime = new TimeSpan(0,(stageTime * 2) / 60, (stageTime * 2) % 60);
             else
-                cropData.GetCropDetails(seedName, CropState.Seeding).cropStageTime = new TimeSpan(0, stageTime * 2, 0);
+                cropData.GetCropDetails(seedName, CropState.Seeding).cropStageTime = new TimeSpan(0,0, stageTime * 2);
             //Debug.Log(cropData.GetCropDetails(seedName, CropState.Seeding).cropStageTime);
             if (stageTime >= 60)
-                cropData.GetCropDetails(seedName, CropState.Growing).cropStageTime = new TimeSpan(stageTime / 60, stageTime % 60, 0);
+                cropData.GetCropDetails(seedName, CropState.Growing).cropStageTime = new TimeSpan(0,stageTime / 60, stageTime % 60);
             else
-                cropData.GetCropDetails(seedName, CropState.Growing).cropStageTime = new TimeSpan(0, stageTime, 0);
+                cropData.GetCropDetails(seedName, CropState.Growing).cropStageTime = new TimeSpan(0,0, stageTime);
             //Debug.Log(cropData.GetCropDetails(seedName, CropState.Growing).cropStageTime);
             cropData.GetCropDetails(seedName, CropState.Ageing).cropStageTime = new TimeSpan(0, 0, 0);
         }
@@ -138,10 +138,9 @@ public class FarmlandManager : Singleton<FarmlandManager>
         }
     }
 
-    //當次產量方法(未完成)
+    //當次產量方法：受顧客購買數量影響
     public int Produce(ItemName seedName)
     {
-        //須等顧客購買方法完成,判斷剩餘多少產量
         return cropData.GetCropStateDetails(seedName).produce;
     }
 }

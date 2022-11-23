@@ -57,4 +57,10 @@ public static class EventHandler
     {
         UpdateHintUIEvent?.Invoke(farmland, farmlandStateSprite);
     }
+
+    public static event Action<Transform,Collider2D[]> GetOtherCustomerEvent;
+    public static void CallGetOtherCustomerEvent(Transform customer, Collider2D[] collider2Ds)
+    {
+        GetOtherCustomerEvent?.Invoke(customer, collider2Ds);
+    }
 }

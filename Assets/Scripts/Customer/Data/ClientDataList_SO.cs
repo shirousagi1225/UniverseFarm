@@ -21,4 +21,6 @@ public class ClientDetails
     public float walkSpeed;
     public int stateTime;
     public float occurrence;
+    public List<ItemName> favoriteFoodList;
+    public List<ItemName> hateFoodList;
 }

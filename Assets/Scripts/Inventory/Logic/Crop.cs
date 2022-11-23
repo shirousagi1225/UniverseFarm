@@ -29,14 +29,8 @@ public class Crop : MonoBehaviour
 
     public void CropClicked()
     {
-        //測試用須以成長階段判斷是否可收成,正式改為顧客是否購買判斷
-        if (_growthStage == 3)
-        {
-            _growthStage++;
-            StartCoroutine(Harvest());
-        } 
-        else
-            StartCoroutine(ShowInfoBar());
+        //測試用須以成長階段判斷是否可收成,正式改為顧客是否購買判斷(已修改)
+        StartCoroutine(ShowInfoBar());
     }
 
     public void SetCrop(ItemDetails seedDetails, ItemName itemName)
@@ -51,14 +45,13 @@ public class Crop : MonoBehaviour
     }
 
     //作物收成方法(未完成)
-    private IEnumerator Harvest()
+    public IEnumerator Harvest()
     {
         if (isInfoBarOpen)
             yield return ShowInfoBar();
         else
             yield return new WaitForSeconds(0);
 
-        InventoryManager.Instance.AddItem(cropName, FarmlandManager.Instance.Produce(seedName));
         EventHandler.CallUpdateFarmlandStateEvent(transform.parent.GetComponent<Farmland>());
         transform.parent.GetComponent<Collider2D>().enabled = true;
         Destroy(gameObject);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -43,7 +44,7 @@ public class AlgorithmManager : Singleton<AlgorithmManager>
     //累加觸發異常狀態機率方法
     public bool TriggerAbnormalState()
     {
-        float nob = Random.Range(0, 1f);
+        float nob = UnityEngine.Random.Range(0, 1.0f);
         Debug.Log("異常累加機率次數："+abnormalTries);
 
         if (nob < startAbnormalProbability * abnormalTries)
@@ -61,7 +62,7 @@ public class AlgorithmManager : Singleton<AlgorithmManager>
     //選擇異常狀態種類方法
     public FarmlandState ChooseAbnormalState()
     {
-        float nob=Random.Range(0, abnormalTotal);
+        float nob= UnityEngine.Random.Range(0, abnormalTotal);
 
         for (int i = 0; i < abnormalProbability.Length; i++)
         {
@@ -80,8 +81,11 @@ public class AlgorithmManager : Singleton<AlgorithmManager>
     //設定顧客出現機率及初始化(考慮寫成事件,並且需訂好各顧客的初始出現機率,不適用平均分配機率,未完成)
     private void InitClientProbability()
     {
-        clientNameDict.Add(0, ClientName.艾絲琪);
-        clientNameDict.Add(1, ClientName.亞伯特);
+        foreach (int clientName in Enum.GetValues(typeof(ClientName)))
+        {
+            if(clientName!=0)
+                clientNameDict.Add(clientName-1, (ClientName)clientName);
+        }
 
         float probabilityValue = 1f / clientNameDict.Count;
         clientNameProbability = new float[2] { probabilityValue, probabilityValue };
@@ -97,7 +101,7 @@ public class AlgorithmManager : Singleton<AlgorithmManager>
     //選擇顧客方法
     public ClientName ChooseClient()
     {
-        float nob = Random.Range(0, clientNameTotal);
+        float nob = UnityEngine.Random.Range(0, clientNameTotal);
 
         for (int i = 0; i < clientNameProbability.Length; i++)
         {

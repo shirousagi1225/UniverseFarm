@@ -26,8 +26,8 @@ public class CropStateDetails
 {
     public ItemName seedName;
     public int produce;
-    public int growTimeHr;
     public int growTimeMin;
+    public int growTimeSec;
     public List<CropDetails> CropDetailsList;
 }
 

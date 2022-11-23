@@ -52,7 +52,8 @@ public class Farmland : MonoBehaviour
         FarmlandManager.Instance.AddFarmland(farmlandName);
         transform.GetChild(0).gameObject.SetActive(true);
         //測試用,正式刪除
-        GetComponent<Collider2D>().enabled = false;
+        if(!canPlant)
+            GetComponent<Collider2D>().enabled = false;
     }
 
     //修繕方法(未完成)

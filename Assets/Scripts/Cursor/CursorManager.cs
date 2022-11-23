@@ -94,6 +94,12 @@ public class CursorManager : MonoBehaviour
     private Collider2D ObjectAtMousePosition()
     {
         //增加Layer參數解決邊界檢測碰撞框干擾點擊的問題
-        return Physics2D.OverlapPoint(mouseWorldPos,1<<LayerMask.NameToLayer("ClickDetect"));
+        var isCustomer = Physics2D.OverlapPoint(mouseWorldPos, 1 << LayerMask.NameToLayer("Customer"));
+        var isClickDetect = Physics2D.OverlapPoint(mouseWorldPos, 1 << LayerMask.NameToLayer("ClickDetect"));
+
+        if (isCustomer)
+            return isCustomer;
+        else
+            return isClickDetect;
     }
 }

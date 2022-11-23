@@ -15,9 +15,15 @@ MonoBehaviour:
   clientDetailsList:
   - clientName: 1
     clientSprite: {fileID: 21300000, guid: dc445b27be8abfb45b2717d03b7df090, type: 3}
-    walkSpeed: 3
+    walkSpeed: 1
     stateTime: 2
+    occurrence: 0
+    favoriteFoodList: 04000000
+    hateFoodList: 0b00000008000000
   - clientName: 2
     clientSprite: {fileID: 21300000, guid: b1d52b2d2e4e07d4faac51b486ab502a, type: 3}
-    walkSpeed: 4
+    walkSpeed: 2
     stateTime: 3
+    occurrence: 0
+    favoriteFoodList: 08000000
+    hateFoodList: 

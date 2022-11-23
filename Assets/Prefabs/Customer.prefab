@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3974900432913888680}
   - component: {fileID: 3974900432913888683}
-  - component: {fileID: 3974900432913888693}
   - component: {fileID: 3974900432913888682}
-  m_Layer: 6
+  - component: {fileID: 4387268082626753907}
+  - component: {fileID: 6730052592910348335}
+  m_Layer: 7
   m_Name: Customer
   m_TagString: Customer
   m_Icon: {fileID: 0}
@@ -86,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &3974900432913888693
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3974900432913888681}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.1, y: -1.4}
-  m_Size: {x: 0.7, y: 0.0001}
-  m_Direction: 0
 --- !u!114 &3974900432913888682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,3 +100,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clientName: 1
+--- !u!61 &4387268082626753907
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3974900432913888681}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.108896255, y: -1.5971451}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3.61}
+    newSize: {x: 3, y: 3.61}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.687251, y: 0.35348368}
+  m_EdgeRadius: 0
+--- !u!70 &6730052592910348335
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3974900432913888681}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.12445283, y: -0.1798842}
+  m_Size: {x: 2.12883, y: 3.534183}
+  m_Direction: 0
