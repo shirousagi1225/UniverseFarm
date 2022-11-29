@@ -53,7 +53,7 @@ public class InventoryUI : MonoBehaviour
                 slotUI = seedContent.transform.GetChild(index).transform.GetChild(1).GetComponent<SlotUI>();
             }
             //currentIndex =index;
-            slotUI.SetItem(itemDetails, itemName, isFirst, inventoryType, UIManager.Instance.mainCanvas.transform);
+            slotUI.SetItem(itemDetails, itemName, isFirst, inventoryType, UIManager.Instance.SecCanvas.transform);
             //slotIndex++;
         }
         else
@@ -62,7 +62,7 @@ public class InventoryUI : MonoBehaviour
                 slotUI = itemContent.transform.GetChild(index).transform.GetChild(1).GetComponent<SlotUI>();
             else if (inventoryType == "Seed")
                 slotUI = seedContent.transform.GetChild(index).transform.GetChild(1).GetComponent<SlotUI>();
-            slotUI.SetItem(itemDetails, itemName, isFirst, inventoryType, UIManager.Instance.mainCanvas.transform);
+            slotUI.SetItem(itemDetails, itemName, isFirst, inventoryType, UIManager.Instance.SecCanvas.transform);
         }
     }
 }

@@ -53,7 +53,7 @@ public class TimeManager : Singleton<TimeManager>
         while (true)
         {
             timeBar.transform.GetChild(0).GetComponent<Text>().text = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(DateTime.Now.DayOfWeek);
-            timeBar.transform.GetChild(1).GetComponent<Text>().text = DateTime.Now.ToString("HH：mm");
+            timeBar.transform.GetChild(1).GetComponent<Text>().text = DateTime.Now.ToString("HH:mm");
             yield return new WaitForSeconds(1);
         }
     }
@@ -117,7 +117,7 @@ public class TimeManager : Singleton<TimeManager>
                 {
                     CustomerManager.Instance.CreateCustomer(GameObject.Find("SpawnPoint"));
                     //測試用,正式暫定TimeSpan(0, 9, 59)
-                    comingTime = new TimeSpan(0, 0, 19);
+                    comingTime = new TimeSpan(0, 0, 9);
                 }
                 else
                     comingTime -= new TimeSpan(0, 0, 1);

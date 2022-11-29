@@ -22,4 +22,10 @@ public enum CropState
 public enum ClientName
 {
     None, 艾絲琪, 亞伯特
+        //, 雅蘭娜, 尼古拉斯, 多莉絲, 倫納德, 魔法阿罵, 漢吉
+}
+
+public enum PokedexState
+{
+    None,初次見面,喜歡,討厭,全解鎖
 }

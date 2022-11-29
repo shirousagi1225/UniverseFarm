@@ -80,7 +80,7 @@ public class FarmlandManager : Singleton<FarmlandManager>
                 canPlantCount++;
         }
         if(canPlantCount==0)
-            UIManager.Instance.ShowSecUI();
+            UIManager.Instance.ShowBackpackBarUI();
         InventoryManager.Instance.ReduceItem(seedDetails.itemName, 1);
     }
 

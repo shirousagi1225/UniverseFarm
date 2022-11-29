@@ -10,7 +10,7 @@ public class CustomerManager : Singleton<CustomerManager>
     public ClientDataList_SO clientData;
     public GameObject customer;
 
-    [SerializeField] private List<ClientName> clientList = new List<ClientName>();
+    private Dictionary<ClientName, List<PokedexState>> clientDict = new();
 
     private void OnEnable()
     {
@@ -44,9 +44,14 @@ public class CustomerManager : Singleton<CustomerManager>
 
     public void AddClient(ClientName clientName)
     {
-        if (!clientList.Contains(clientName))
+        if (!clientDict.ContainsKey(clientName))
         {
-            clientList.Add(clientName);
+            List<PokedexState> pokedexStateList = new();
+            clientDict.Add(clientName, pokedexStateList);
+            clientDict[clientName].Add(PokedexState.初次見面);
+            clientData.GetClientDetails(clientName).pokedexState++;
+            //Debug.Log(pokedexStateList.Count);
+            //Debug.Log(clientDict[clientName].Count);
         }
     }
 
@@ -55,6 +60,23 @@ public class CustomerManager : Singleton<CustomerManager>
     {
         Instantiate(customer, spawnPoint.transform.position,Quaternion.identity, spawnPoint.transform.parent);
         spawnPoint.transform.parent.GetChild(spawnPoint.transform.parent.childCount-1).GetComponent<Customer>().SetCustomer(clientData.GetClientDetails(AlgorithmManager.Instance.ChooseClient()));
+    }
+
+    //進入對話方法(未完成)
+    public void EnterDialogue(ClientName clientName)
+    {
+        //Debug.Log(clientDict[clientName].Count);
+
+        //需判斷角色圖鑑解鎖階段,顯示相對應的對話
+        if (clientDict[clientName].Count== clientData.GetClientDetails(clientName).pokedexState)
+        {
+            //啟動子UI
+            EventHandler.CallShowSecUIEvent(true);
+            //啟動對話方法
+            DialogueManager.Instance.GetDialogueFormFile(clientData.GetClientDetails(clientName), ((PokedexState)clientDict[clientName].Count).ToString());
+            DialogueManager.Instance.ShowDialogue();
+            clientData.GetClientDetails(clientName).pokedexState++;
+        }
     }
 
     //購買作物選擇方法(未完成)

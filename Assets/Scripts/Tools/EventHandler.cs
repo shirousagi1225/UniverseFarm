@@ -63,4 +63,16 @@ public static class EventHandler
     {
         GetOtherCustomerEvent?.Invoke(customer, collider2Ds);
     }
+
+    public static event Action<bool> ShowSecUIEvent;
+    public static void CallShowSecUIEvent(bool canOpenSecUI)
+    {
+        ShowSecUIEvent?.Invoke(canOpenSecUI);
+    }
+
+    public static event Action<ClientDetails, string> ShowDialogueEvent;
+    public static void CallShowDialogueEvent(ClientDetails clientDetails, string dialogue)
+    {
+        ShowDialogueEvent?.Invoke(clientDetails, dialogue);
+    }
 }

@@ -47,7 +47,7 @@ public class SlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     public void OnBeginDrag(PointerEventData eventData)
     {
         //判斷使用哪種UI來限制拖動功能
-        if (GameObject.Find("BackpackButton")==null)
+        if (GameObject.Find("MainCanvas").GetComponent<CanvasGroup>().alpha == 0f)
         {
             startPos = transform.position;
             startParent = transform.parent;
@@ -57,7 +57,7 @@ public class SlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (GameObject.Find("BackpackButton") == null)
+        if (GameObject.Find("MainCanvas").GetComponent<CanvasGroup>().alpha == 0f)
         {
             #if !UNITY_EDITOR && UNITY_ANDROID
                 transform.position = Input.GetTouch(0).position;
@@ -69,7 +69,7 @@ public class SlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (GameObject.Find("BackpackButton") == null)
+        if (GameObject.Find("MainCanvas").GetComponent<CanvasGroup>().alpha == 0f)
         {
             transform.SetParent(startParent);
             transform.SetSiblingIndex(1);

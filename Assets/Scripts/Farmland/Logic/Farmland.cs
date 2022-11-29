@@ -61,6 +61,6 @@ public class Farmland : MonoBehaviour
     public void PlantAction()
     {
         //需判斷是否翻過土,有翻過才能開啟種植UI
-        UIManager.Instance.ShowSecUI();
+        UIManager.Instance.ShowBackpackBarUI();
     }
 }

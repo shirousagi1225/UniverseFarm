@@ -26,9 +26,15 @@ public class BackpackUI : MonoBehaviour
         {
             currentImage.sprite = changeImage;
             backpackBar.SetActive(true);
+            backpackBar.transform.parent.GetComponent<CanvasGroup>().alpha = 1.0f;
+            backpackBar.transform.parent.GetComponent<CanvasGroup>().interactable = isBackpackOpen;
+            backpackBar.transform.parent.GetComponent<CanvasGroup>().blocksRaycasts = isBackpackOpen;
         }
         else
         {
+            backpackBar.transform.parent.GetComponent<CanvasGroup>().alpha = 1.0f;
+            backpackBar.transform.parent.GetComponent<CanvasGroup>().interactable = isBackpackOpen;
+            backpackBar.transform.parent.GetComponent<CanvasGroup>().blocksRaycasts = isBackpackOpen;
             currentImage.sprite = startImage;
             backpackBar.SetActive(false);
         }
