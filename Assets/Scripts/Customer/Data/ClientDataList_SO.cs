@@ -18,6 +18,7 @@ public class ClientDetails
 {
     public ClientName clientName;
     public Sprite clientSprite;
+    public Sprite basicInfo;
     public float walkSpeed;
     public int stateTime;
     public float occurrence;

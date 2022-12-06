@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using LitJson;
-using System.IO;
 using System.Text;
 using System;
 using UnityEngine.Networking;
@@ -12,34 +11,30 @@ public class DialogueManager : Singleton<DialogueManager>
     private Stack<string> dialogueStack;
     private DialogueData_Ob dialogueData_Ob;
     private string dialogueJsonPath= Application.streamingAssetsPath+ "/DialogueData/Json/Dialogs.json";
-    private string dialogueFile;
     private bool isTalking;
     private ClientDetails currentCustomer;
 
     protected override void Awake()
     {
         base.Awake();
-        #if !UNITY_EDITOR && UNITY_ANDROID
-            //之後需寫在開始遊戲事件
-            var dialogueJson = UnityWebRequest.Get(dialogueJsonPath);
-            dialogueJson.SendWebRequest();
 
-            dialogueData_Ob = JsonMapper.ToObject<DialogueData_Ob>(dialogueJson.downloadHandler.text);
-        #else
-            var dialogueJson = File.ReadAllText(dialogueJsonPath, Encoding.GetEncoding("utf-8"));
-            dialogueData_Ob = JsonMapper.ToObject<DialogueData_Ob>(dialogueJson);
-        #endif
+        //之後需寫在開始遊戲事件
+        var dialogueJson = UnityWebRequest.Get(dialogueJsonPath);
+        dialogueJson.SendWebRequest();
+        StartCoroutine(WaitLoadData(dialogueJson));
+        Debug.Log(dialogueJson.downloadHandler.text);
+        dialogueData_Ob = JsonMapper.ToObject<DialogueData_Ob>(Encoding.GetEncoding("utf-8").GetString(dialogueJson.downloadHandler.data));
+        Debug.Log(dialogueData_Ob);
 
         dialogueStack = new Stack<string>();
         isTalking = false;
     }
 
-    //讀取對話文本方法(未完成)
+    //讀取對話文本方法
     public void GetDialogueFormFile(ClientDetails clientDetails, string dialogueName)
     {
         currentCustomer = clientDetails;
         dialogueStack.Clear();
-        //Debug.Log(dialogueFile);
 
         var dialogue = dialogueData_Ob.dialogueData.Find(i => i.clientName == currentCustomer.clientName.ToString()).clientData.Find(i => i.dialogueName == dialogueName);
 
@@ -49,7 +44,7 @@ public class DialogueManager : Singleton<DialogueManager>
         }
     }
 
-    //顯示對話方法(未完成)
+    //顯示對話方法
     public void ShowDialogue()
     {
         if(!isTalking)
@@ -69,8 +64,17 @@ public class DialogueManager : Singleton<DialogueManager>
         {
             EventHandler.CallShowDialogueEvent(currentCustomer, string.Empty);
             //關閉子UI
-            EventHandler.CallShowSecUIEvent(false);
+            //需加入判斷是否同時有其他次UI開啟
+            if(!GameObject.Find("UniversalPanel").activeInHierarchy)
+                EventHandler.CallShowSecUIEvent(false, true);
             isTalking = false;
         }    
+    }
+
+    //等待下載完成方法
+    private IEnumerator WaitLoadData(UnityWebRequest dialogueJson)
+    {
+        while(!dialogueJson.isDone)
+            yield return 0;
     }
 }

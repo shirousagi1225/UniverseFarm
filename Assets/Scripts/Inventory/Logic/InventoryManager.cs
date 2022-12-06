@@ -39,6 +39,10 @@ public class InventoryManager : Singleton<InventoryManager>
             itemData.GetItemDetails(itemName).itemCount += itemCount;
             EventHandler.CallUpdateInventoryUIEvent(itemData.GetItemDetails(itemName), ItemName.None, itemList.FindIndex(i => i == itemName), false, "Item");
         }
+
+        //需思考通用UI類型的定義
+        //須解決對話跟通用UI同時出現問題
+        EventHandler.CallSetUniversalUIEvent(UniversalUIType.CustomerSell, itemData.GetItemDetails(itemName), itemCount);
     }
 
     //增加種子方法(未完成)
@@ -55,6 +59,9 @@ public class InventoryManager : Singleton<InventoryManager>
             seedData.GetItemDetails(seedName).itemCount += seedCount;
             EventHandler.CallUpdateInventoryUIEvent(seedData.GetItemDetails(seedName), itemName, seedList.FindIndex(i => i == seedName), false, "Seed");
         }
+
+        //測試用,正式刪除
+        EventHandler.CallSetUniversalUIEvent(UniversalUIType.CustomerSell, seedData.GetItemDetails(seedName), seedCount);
     }
 
     //減少持有量方法(未完成)

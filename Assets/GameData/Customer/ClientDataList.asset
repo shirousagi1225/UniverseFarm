@@ -15,6 +15,7 @@ MonoBehaviour:
   clientDetailsList:
   - clientName: 1
     clientSprite: {fileID: 21300000, guid: dc445b27be8abfb45b2717d03b7df090, type: 3}
+    basicInfo: {fileID: 0}
     walkSpeed: 1
     stateTime: 2
     occurrence: 0
@@ -23,6 +24,7 @@ MonoBehaviour:
     hateFoodList: 0b000000
   - clientName: 2
     clientSprite: {fileID: 21300000, guid: b1d52b2d2e4e07d4faac51b486ab502a, type: 3}
+    basicInfo: {fileID: 0}
     walkSpeed: 2
     stateTime: 3
     occurrence: 0
@@ -31,6 +33,7 @@ MonoBehaviour:
     hateFoodList: 0a000000
   - clientName: 0
     clientSprite: {fileID: 0}
+    basicInfo: {fileID: 0}
     walkSpeed: 0
     stateTime: 0
     occurrence: 0
@@ -39,6 +42,7 @@ MonoBehaviour:
     hateFoodList: 05000000
   - clientName: 0
     clientSprite: {fileID: 0}
+    basicInfo: {fileID: 0}
     walkSpeed: 0
     stateTime: 0
     occurrence: 0
@@ -47,6 +51,7 @@ MonoBehaviour:
     hateFoodList: 09000000
   - clientName: 0
     clientSprite: {fileID: 0}
+    basicInfo: {fileID: 0}
     walkSpeed: 0
     stateTime: 0
     occurrence: 0
@@ -55,6 +60,7 @@ MonoBehaviour:
     hateFoodList: 03000000
   - clientName: 0
     clientSprite: {fileID: 0}
+    basicInfo: {fileID: 0}
     walkSpeed: 0
     stateTime: 0
     occurrence: 0
@@ -63,6 +69,7 @@ MonoBehaviour:
     hateFoodList: 04000000
   - clientName: 0
     clientSprite: {fileID: 0}
+    basicInfo: {fileID: 0}
     walkSpeed: 0
     stateTime: 0
     occurrence: 0
@@ -71,6 +78,7 @@ MonoBehaviour:
     hateFoodList: 06000000
   - clientName: 0
     clientSprite: {fileID: 0}
+    basicInfo: {fileID: 0}
     walkSpeed: 0
     stateTime: 0
     occurrence: 0

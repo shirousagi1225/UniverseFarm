@@ -76,13 +76,12 @@ public class Customer : MonoBehaviour
         stateTime = clientDetails.stateTime;
     }
 
-    //結帳方法(未完成)
+    //結帳方法
     private bool CheckOut()
     {
         int soldCount= CustomerManager.Instance.BuyCrops(clientName);
         Debug.Log("購買數量：" + soldCount);
 
-        //須加入結算UI方法
         if (soldCount==0)
             return false;
         else

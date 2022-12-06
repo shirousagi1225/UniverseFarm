@@ -32,30 +32,11 @@ public class DialogueUI : MonoBehaviour
 
     private void Update()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            //判斷是否點擊以繼續進行對話
-            if (isDialogueFn && GameObject.Find("DialoguePanel") != null)
-            {
-                #if !UNITY_EDITOR && UNITY_ANDROID
-                    if(EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-                        DialogueManager.Instance.ShowDialogue();
-                #else
-                    if (Input.GetMouseButtonDown(0))
-                        DialogueManager.Instance.ShowDialogue();
-                #endif
-            }
-            else if (!isDialogueFn && canTyping && Input.GetMouseButtonDown(0) && GameObject.Find("DialoguePanel") != null)
-            {
-                #if !UNITY_EDITOR && UNITY_ANDROID
-                    if(EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-                        canTyping = false;
-                #else
-                    if (Input.GetMouseButtonDown(0))
-                        canTyping = false;
-                #endif
-            }   
-        }
+        //判斷是否點擊以繼續進行對話
+        if (isDialogueFn && Input.GetMouseButtonDown(0) && GameObject.Find("DialoguePanel") != null)
+            DialogueManager.Instance.ShowDialogue();
+        else if (!isDialogueFn && canTyping && Input.GetMouseButtonDown(0) && GameObject.Find("DialoguePanel") != null)
+            canTyping = false;
     }
 
     private void OnShowDialogueEvent(ClientDetails clientDetails, string dialogue)

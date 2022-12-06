@@ -64,15 +64,33 @@ public static class EventHandler
         GetOtherCustomerEvent?.Invoke(customer, collider2Ds);
     }
 
-    public static event Action<bool> ShowSecUIEvent;
-    public static void CallShowSecUIEvent(bool canOpenSecUI)
+    public static event Action<bool,bool> ShowSecUIEvent;
+    public static void CallShowSecUIEvent(bool canOpenSecUI,bool canSwitch)
     {
-        ShowSecUIEvent?.Invoke(canOpenSecUI);
+        ShowSecUIEvent?.Invoke(canOpenSecUI, canSwitch);
     }
 
     public static event Action<ClientDetails, string> ShowDialogueEvent;
     public static void CallShowDialogueEvent(ClientDetails clientDetails, string dialogue)
     {
         ShowDialogueEvent?.Invoke(clientDetails, dialogue);
+    }
+
+    public static event Action<ClientDetails> ShowPokedexEvent;
+    public static void CallShowPokedexEvent(ClientDetails clientDetails)
+    {
+        ShowPokedexEvent?.Invoke(clientDetails);
+    }
+
+    public static event Action<UniversalUIType, ItemDetails,int> SetUniversalUIEvent;
+    public static void CallSetUniversalUIEvent(UniversalUIType UIType, ItemDetails itemDetails,int count)
+    {
+        SetUniversalUIEvent?.Invoke(UIType, itemDetails, count);
+    }
+
+    public static event Action<UniversalUIDetails,ItemDetails,int> ShowUniversalUIEvent;
+    public static void CallShowUniversalUIEvent(UniversalUIDetails UITypeDetails, ItemDetails itemDetails, int count)
+    {
+        ShowUniversalUIEvent?.Invoke(UITypeDetails,itemDetails, count);
     }
 }

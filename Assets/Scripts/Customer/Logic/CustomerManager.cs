@@ -49,7 +49,6 @@ public class CustomerManager : Singleton<CustomerManager>
             List<PokedexState> pokedexStateList = new();
             clientDict.Add(clientName, pokedexStateList);
             clientDict[clientName].Add(PokedexState.初次見面);
-            clientData.GetClientDetails(clientName).pokedexState++;
             //Debug.Log(pokedexStateList.Count);
             //Debug.Log(clientDict[clientName].Count);
         }
@@ -68,13 +67,17 @@ public class CustomerManager : Singleton<CustomerManager>
         //Debug.Log(clientDict[clientName].Count);
 
         //需判斷角色圖鑑解鎖階段,顯示相對應的對話
-        if (clientDict[clientName].Count== clientData.GetClientDetails(clientName).pokedexState)
+        if (clientDict[clientName].Count-1== clientData.GetClientDetails(clientName).pokedexState)
         {
             //啟動子UI
-            EventHandler.CallShowSecUIEvent(true);
+            EventHandler.CallShowSecUIEvent(true,true);
             //啟動對話方法
-            DialogueManager.Instance.GetDialogueFormFile(clientData.GetClientDetails(clientName), ((PokedexState)clientDict[clientName].Count).ToString());
+            DialogueManager.Instance.GetDialogueFormFile(clientData.GetClientDetails(clientName), clientDict[clientName][clientDict[clientName].Count-1].ToString());
             DialogueManager.Instance.ShowDialogue();
+
+            //測試用,正式要刪除
+            PokedexManager.Instance.GetPokedexFormFile(clientData.GetClientDetails(clientName));
+
             clientData.GetClientDetails(clientName).pokedexState++;
         }
     }
@@ -97,7 +100,7 @@ public class CustomerManager : Singleton<CustomerManager>
         }
 
         //依照喜好程度依序判斷顧客是否進行購買,喜好程度高優先購買
-        while (favoriteState<3&& matureCropDict!=null)
+        while (favoriteState<3&& matureCropCount != 0)
         {
             Debug.Log("喜好程度："+favoriteState);
             if (favoriteState == 0)
@@ -113,6 +116,11 @@ public class CustomerManager : Singleton<CustomerManager>
                             InventoryManager.Instance.AddItem(matureCropDict[i].cropName, produce - soldCount);
                         matureCropDict[i].growthStage=4;
                         StartCoroutine(matureCropDict[i].Harvest());
+
+                        //判斷是否購買到喜歡的作物,是的話新增特殊對話
+                        if (!clientDict[clientName].Contains(PokedexState.喜歡)&& clientData.GetClientDetails(clientName).pokedexState!=0)
+                            clientDict[clientName].Add(PokedexState.喜歡);
+
                         return soldCount;
                     }
                 }
@@ -138,13 +146,18 @@ public class CustomerManager : Singleton<CustomerManager>
             else if(favoriteState == 2)
             {
                 //討厭(購買比例：30%～10%)
-                if (!clientData.GetClientDetails(clientName).hateFoodList.Contains(matureCropDict[0].cropName))
+                if (clientData.GetClientDetails(clientName).hateFoodList.Contains(matureCropDict[0].cropName))
                 {
                     int produce = FarmlandManager.Instance.Produce(matureCropDict[0].seedName);
                     int soldCount = (int)(produce * UnityEngine.Random.Range(0.1f, 0.3f));
                     InventoryManager.Instance.AddItem(matureCropDict[0].cropName, produce - soldCount);
                     matureCropDict[0].growthStage = 4;
                     StartCoroutine(matureCropDict[0].Harvest());
+
+                    //判斷是否購買到討厭的作物,是的話新增特殊對話
+                    if (!clientDict[clientName].Contains(PokedexState.討厭) && clientData.GetClientDetails(clientName).pokedexState != 0)
+                        clientDict[clientName].Add(PokedexState.討厭);
+
                     return soldCount;
                 }
                 favoriteState++;

@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 public class CursorManager : MonoBehaviour
 {
     private Vector3 mouseWorldPos => Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+    private Vector3 startPos;
 
     private bool canClick;
 
@@ -36,6 +37,18 @@ public class CursorManager : MonoBehaviour
             else
             {
                 CameraManager.Instance.InputType();
+
+                //判斷是否點擊場景關閉種植UI(只有單點場景才會關閉,有進行相機移動則不會)
+                if (Input.GetMouseButtonDown(0)&& !UIManager.Instance.isMainUIOpen && GameObject.Find("BackpackBar") != null)
+                {
+                    startPos = Input.mousePosition;
+                    //Debug.Log(startPos);
+                }
+                else if (Input.GetMouseButtonUp(0)&& !UIManager.Instance.isMainUIOpen && mouseWorldPos == Camera.main.ScreenToWorldPoint(new Vector3(startPos.x, startPos.y, 0)) && GameObject.Find("BackpackBar") != null)
+                {
+                    //Debug.Log(mouseWorldPos);
+                    UIManager.Instance.ShowBackpackBarUI();
+                }
             }
         }
     }
