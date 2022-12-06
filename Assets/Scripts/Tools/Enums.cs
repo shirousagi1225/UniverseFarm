@@ -29,3 +29,8 @@ public enum PokedexState
 {
     None,初次見面,喜歡,討厭,全解鎖
 }
+
+public enum UniversalUIType
+{
+    None, Confirm, CustomerSell,ShopSell,ShopBuy
+}

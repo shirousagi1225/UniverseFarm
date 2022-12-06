@@ -40,8 +40,6 @@ public class Crop : MonoBehaviour
         cropName = itemName;
         //測試用,正式不需要加
         _growthStage = 0;
-        //測試用,正式不需要加
-        GetComponent<SpriteRenderer>().sprite = seedDetails.itemSprite;
     }
 
     //作物收成方法(未完成)

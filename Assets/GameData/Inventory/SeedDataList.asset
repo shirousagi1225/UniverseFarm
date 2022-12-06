@@ -18,7 +18,7 @@ MonoBehaviour:
     itemCount: 2
   - itemName: 14
     itemSprite: {fileID: 21300000, guid: 62b46541cf2029c448542cce320dad0f, type: 3}
-    itemCount: 0
+    itemCount: 2
   - itemName: 15
     itemSprite: {fileID: 21300000, guid: 3bcc3e210c78ecd4080901065ae17c8f, type: 3}
     itemCount: 0

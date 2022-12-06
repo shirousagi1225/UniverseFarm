@@ -63,6 +63,8 @@ public class TimeManager : Singleton<TimeManager>
     {
         while (true)
         {
+            bool isAbnormalCountDown=false;
+
             foreach (var farmland in FindObjectsOfType<Farmland>())
             {
                 if (growTimeDict.ContainsKey(farmland.farmlandName))
@@ -83,7 +85,7 @@ public class TimeManager : Singleton<TimeManager>
 
                     //暫定(可修改)：每隔一段時間執行觸發異常狀態判斷(目前觸發是所有種植中作物進行一次判斷,非個別判斷)
                     //測試用,正式暫定TimeSpan(0, 4, 59)
-                    if (!farmland.transform.GetChild(0).gameObject.activeInHierarchy)
+                    if (!isAbnormalCountDown && !farmland.transform.GetChild(0).gameObject.activeInHierarchy)
                     {
                         if (judgeAbnormalTime >= new TimeSpan(0, 0, 9))
                         {
@@ -92,6 +94,7 @@ public class TimeManager : Singleton<TimeManager>
                         }
                         else
                             judgeAbnormalTime += new TimeSpan(0, 0, 1);
+                        isAbnormalCountDown=true;
                         Debug.Log(judgeAbnormalTime);
                     }
                 }

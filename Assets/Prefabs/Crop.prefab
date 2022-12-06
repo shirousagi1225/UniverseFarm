@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5338566736873998222}
   - component: {fileID: 5338566736873998217}
   - component: {fileID: 5338566736873998220}
-  - component: {fileID: 5338566736873998223}
+  - component: {fileID: -2501070362656377730}
   m_Layer: 6
   m_Name: Crop
   m_TagString: Crop
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 160453667
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f0153458d16eb764b9d79b13eb48b01f, type: 3}
+  m_Sprite: {fileID: -761624592, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seedName: 13
   cropName: 3
---- !u!61 &5338566736873998223
+--- !u!61 &-2501070362656377730
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,16 +113,16 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.014269471, y: 0.37188774}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.14, y: 1.09}
+    pivot: {x: 0.5, y: 0.4}
+    oldSize: {x: 2.94, y: 2.72}
     newSize: {x: 1, y: 1.29}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.29}
+  m_Size: {x: 1.7270694, y: 1.4499909}
   m_EdgeRadius: 0

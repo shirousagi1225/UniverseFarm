@@ -19,127 +19,127 @@ MonoBehaviour:
     growTimeSec: 35
     CropDetailsList:
     - cropState: 1
-      cropStateSprite: {fileID: 21300000, guid: 652932efba7d0244fae0fba593774c13, type: 3}
+      cropStateSprite: {fileID: -761624592, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 2
-      cropStateSprite: {fileID: 21300000, guid: 19937b31e38d0c94b89ce75ff283d056, type: 3}
+      cropStateSprite: {fileID: -1916672446, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 3
-      cropStateSprite: {fileID: 21300000, guid: 5533b3a92a3c18c4eabefe1a6c5e0a59, type: 3}
+      cropStateSprite: {fileID: -1590661386, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 4
-      cropStateSprite: {fileID: 21300000, guid: 9ade71a17d2a993448f622964a5fb0cc, type: 3}
+      cropStateSprite: {fileID: -2098274221, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
   - seedName: 14
     produce: 12
     growTimeMin: 1
     growTimeSec: 0
     CropDetailsList:
     - cropState: 1
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -761624592, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 2
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -1916672446, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 3
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -567758689, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 4
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -1987910882, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
   - seedName: 15
     produce: 13
     growTimeMin: 1
     growTimeSec: 40
     CropDetailsList:
     - cropState: 1
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -761624592, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 2
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -1916672446, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 3
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: 95597975, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 4
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -1319405924, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
   - seedName: 16
     produce: 10
     growTimeMin: 2
     growTimeSec: 50
     CropDetailsList:
     - cropState: 1
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -761624592, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 2
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -1916672446, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 3
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: 494123726, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 4
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: 2062363822, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
   - seedName: 17
     produce: 10
     growTimeMin: 6
     growTimeSec: 0
     CropDetailsList:
     - cropState: 1
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -761624592, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 2
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -1916672446, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 3
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: 1084280004, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 4
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -5385127, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
   - seedName: 18
     produce: 11
     growTimeMin: 10
     growTimeSec: 0
     CropDetailsList:
     - cropState: 1
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -761624592, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 2
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -1916672446, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 3
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -748656234, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 4
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: 1764109405, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
   - seedName: 19
     produce: 10
     growTimeMin: 15
     growTimeSec: 0
     CropDetailsList:
     - cropState: 1
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -761624592, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 2
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -1916672446, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 3
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: 1203444358, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 4
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: 1262982965, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
   - seedName: 20
     produce: 15
     growTimeMin: 20
     growTimeSec: 0
     CropDetailsList:
     - cropState: 1
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -761624592, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 2
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -1916672446, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 3
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -938778753, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 4
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: 1634023675, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
   - seedName: 21
     produce: 12
     growTimeMin: 30
     growTimeSec: 0
     CropDetailsList:
     - cropState: 1
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -761624592, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 2
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -1916672446, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 3
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: 1559800610, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 4
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -875159622, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
   - seedName: 22
     produce: 15
     growTimeMin: 60
     growTimeSec: 0
     CropDetailsList:
     - cropState: 1
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -761624592, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 2
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -1916672446, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 3
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -1449815592, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
     - cropState: 4
-      cropStateSprite: {fileID: 0}
+      cropStateSprite: {fileID: -565217336, guid: 567c560404a2f6d4e81f1eb942b8bac7, type: 3}
