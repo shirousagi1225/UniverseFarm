@@ -44,7 +44,7 @@ public class CursorManager : MonoBehaviour
                     startPos = Input.mousePosition;
                     //Debug.Log(startPos);
                 }
-                else if (Input.GetMouseButtonUp(0)&& !UIManager.Instance.isMainUIOpen && mouseWorldPos == Camera.main.ScreenToWorldPoint(new Vector3(startPos.x, startPos.y, 0)) && GameObject.Find("BackpackBar") != null)
+                else if (Input.GetMouseButtonUp(0)&& !UIManager.Instance.isMainUIOpen && (mouseWorldPos- Camera.main.ScreenToWorldPoint(new Vector3(startPos.x, startPos.y, 0))).sqrMagnitude<0.09f && GameObject.Find("BackpackBar") != null)
                 {
                     //Debug.Log(mouseWorldPos);
                     UIManager.Instance.ShowBackpackBarUI();

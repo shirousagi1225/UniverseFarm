@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FarmlandManager : Singleton<FarmlandManager>
+public class FarmlandManager : Singleton<FarmlandManager>,ISaveable
 {
     public FarmlandDataList_SO farmlandData;
     public FarmlandStateDataList_SO farmlandStateData;
@@ -13,6 +13,10 @@ public class FarmlandManager : Singleton<FarmlandManager>
 
     private void OnEnable()
     {
+        //註冊保存數據
+        ISaveable saveable = this;
+        saveable.SaveableRegister();
+
         EventHandler.UpdateFarmlandStateEvent += OnUpdateFarmlandStateEvent;
     }
 
@@ -142,5 +146,17 @@ public class FarmlandManager : Singleton<FarmlandManager>
     public int Produce(ItemName seedName)
     {
         return cropData.GetCropStateDetails(seedName).produce;
+    }
+
+    public SaveData GenerateSaveData()
+    {
+        SaveData saveData = new SaveData();
+        ///saveData.farmlandList = farmlandList;
+        return saveData;
+    }
+
+    public void RestoreGameData(SaveData saveData)
+    {
+        //farmlandList=saveData.farmlandList;
     }
 }

@@ -14,38 +14,74 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDetailsList:
   - itemName: 1
+    cropName: 0
+    pokedexNum: 0
     itemSprite: {fileID: 21300000, guid: 28c882ed5ef004b468a4c337a74ae960, type: 3}
-    itemCount: 15000
+    itemCount: 0
+    itemPrice: 0
   - itemName: 2
+    cropName: 0
+    pokedexNum: 0
     itemSprite: {fileID: 21300000, guid: 9919946f40a375c4aafa66076c14910b, type: 3}
     itemCount: 200
+    itemPrice: 0
   - itemName: 3
+    cropName: 0
+    pokedexNum: 1
     itemSprite: {fileID: 21300000, guid: f0153458d16eb764b9d79b13eb48b01f, type: 3}
     itemCount: 0
+    itemPrice: 10
   - itemName: 4
+    cropName: 0
+    pokedexNum: 2
     itemSprite: {fileID: 21300000, guid: 3bb9b8047b6e3bf478182e64a4fcdbe3, type: 3}
     itemCount: 0
+    itemPrice: 23
   - itemName: 5
+    cropName: 0
+    pokedexNum: 3
     itemSprite: {fileID: 21300000, guid: c2f5fb06b3a0a364caab8662e752f853, type: 3}
     itemCount: 0
+    itemPrice: 23
   - itemName: 6
+    cropName: 0
+    pokedexNum: 4
     itemSprite: {fileID: 21300000, guid: c469ae07fe8a1a544983a7d9edc5de27, type: 3}
     itemCount: 0
+    itemPrice: 37
   - itemName: 7
+    cropName: 0
+    pokedexNum: 5
     itemSprite: {fileID: 21300000, guid: d3e12a0fa189b8f44bd5c4bd0cebe625, type: 3}
     itemCount: 0
+    itemPrice: 45
   - itemName: 8
+    cropName: 0
+    pokedexNum: 6
     itemSprite: {fileID: 21300000, guid: b1d7f470aef329a4da6d590b57b96bc6, type: 3}
     itemCount: 0
+    itemPrice: 45
   - itemName: 9
+    cropName: 0
+    pokedexNum: 7
     itemSprite: {fileID: 21300000, guid: 1d507b288f4375246a1bd774785833e3, type: 3}
     itemCount: 0
+    itemPrice: 56
   - itemName: 10
+    cropName: 0
+    pokedexNum: 8
     itemSprite: {fileID: 21300000, guid: 4bdabf9d936065148aa040d7173b2a24, type: 3}
     itemCount: 0
+    itemPrice: 60
   - itemName: 11
+    cropName: 0
+    pokedexNum: 9
     itemSprite: {fileID: 21300000, guid: 24de0bf996d03d048bbd7c1ac24879c5, type: 3}
     itemCount: 0
+    itemPrice: 75
   - itemName: 12
+    cropName: 0
+    pokedexNum: 10
     itemSprite: {fileID: 21300000, guid: dfed6ddd5a857624b92d76ae57ae3891, type: 3}
     itemCount: 0
+    itemPrice: 300

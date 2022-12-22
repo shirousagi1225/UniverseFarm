@@ -18,6 +18,4 @@ public class UniversalUIDetails
 {
     public UniversalUIType UIType;
     public string title;
-    public string buttonText01;
-    public string buttonText02;
 }

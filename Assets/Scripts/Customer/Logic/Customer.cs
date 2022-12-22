@@ -21,13 +21,12 @@ public class Customer : MonoBehaviour
 
     private void Start()
     {
-        CustomerManager.Instance.AddClient(clientName);
         //給遊戲物件一個初始方向，讓他去撞擊邊界觸發器
         dir = new Vector3(UnityEngine.Random.Range(0, 10), UnityEngine.Random.Range(-10, 0), 0);
         countTime = 0;
-        isWalk=true;
-        isDragging=false;
-        isExitRange=false;
+        isWalk = true;
+        isDragging = false;
+        isExitRange = false;
     }
 
     private void Update()
@@ -37,17 +36,26 @@ public class Customer : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if (!isDragging)
-        {
-            startPos = transform.position;
-            isDragging = true;
-        }
-        //Debug.Log(isDragging);
         #if !UNITY_EDITOR && UNITY_ANDROID
-            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y,10));
+            bool isTouchUIElement = EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
         #else
-            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,10));
+            bool isTouchUIElement = EventSystem.current.IsPointerOverGameObject();
         #endif
+
+        if (!isTouchUIElement)
+        {
+            if (!isDragging)
+            {
+                startPos = transform.position;
+                isDragging = true;
+            }
+            //Debug.Log(isDragging);
+            #if !UNITY_EDITOR && UNITY_ANDROID
+                transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y,10));
+            #else
+                transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+            #endif
+        }
     }
 
     private void OnMouseUp()
@@ -57,21 +65,22 @@ public class Customer : MonoBehaviour
         {
             //需判斷放開的地方是否為農田區以及是否有已成熟作物,有才能執行結帳方法
             //需在必要時開關農田區碰撞框
-            if (Physics2D.OverlapCircle(transform.position, 2f, 1 << LayerMask.NameToLayer("InteractiveArea"))&& CheckOut())
+            if (Physics2D.OverlapCircle(transform.position, 2f, 1 << LayerMask.NameToLayer("InteractiveArea")) && CheckOut())
             {
                 CustomerManager.Instance.EnterDialogue(clientName);
                 Destroy(gameObject);
-            }else
+            }
+            else
                 transform.position = startPos;
-            isExitRange=false;
+            isExitRange = false;
         }
         isDragging = false;
     }
 
     public void SetCustomer(ClientDetails clientDetails)
     {
-        clientName =clientDetails.clientName;
-        GetComponent<SpriteRenderer>().sprite =clientDetails.clientSprite;
+        clientName = clientDetails.clientName;
+        GetComponent<SpriteRenderer>().sprite = clientDetails.clientSprite;
         speed = clientDetails.walkSpeed;
         stateTime = clientDetails.stateTime;
     }
@@ -79,10 +88,10 @@ public class Customer : MonoBehaviour
     //結帳方法
     private bool CheckOut()
     {
-        int soldCount= CustomerManager.Instance.BuyCrops(clientName);
+        int soldCount = CustomerManager.Instance.BuyCrops(clientName);
         Debug.Log("購買數量：" + soldCount);
 
-        if (soldCount==0)
+        if (soldCount == 0)
             return false;
         else
             return true;

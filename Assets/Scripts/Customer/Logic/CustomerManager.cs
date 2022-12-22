@@ -15,6 +15,15 @@ public class CustomerManager : Singleton<CustomerManager>
     private void OnEnable()
     {
         EventHandler.GetOtherCustomerEvent += OnOtherCustomerEvent;
+        //測試用,正式根據初始角色數量而定
+        AddClient(ClientName.艾絲琪);
+        AddClient(ClientName.亞伯特);
+        AddClient(ClientName.雅蘭娜);
+        AddClient(ClientName.漢吉);
+        AddClient(ClientName.倫納德);
+        AddClient(ClientName.多莉絲);
+        AddClient(ClientName.尼古拉斯);
+        AddClient(ClientName.魔法阿罵);
     }
 
     private void OnDisable()
@@ -49,6 +58,7 @@ public class CustomerManager : Singleton<CustomerManager>
             List<PokedexState> pokedexStateList = new();
             clientDict.Add(clientName, pokedexStateList);
             clientDict[clientName].Add(PokedexState.初次見面);
+            EventHandler.CallSetClientProbabilityEvent(clientData.GetClientDetails(clientName),1);
             //Debug.Log(pokedexStateList.Count);
             //Debug.Log(clientDict[clientName].Count);
         }
@@ -70,13 +80,13 @@ public class CustomerManager : Singleton<CustomerManager>
         if (clientDict[clientName].Count-1== clientData.GetClientDetails(clientName).pokedexState)
         {
             //啟動子UI
-            EventHandler.CallShowSecUIEvent(true,true);
+            EventHandler.CallShowSecUIEvent("SecCanvas", true,true);
             //啟動對話方法
             DialogueManager.Instance.GetDialogueFormFile(clientData.GetClientDetails(clientName), clientDict[clientName][clientDict[clientName].Count-1].ToString());
             DialogueManager.Instance.ShowDialogue();
 
             //測試用,正式要刪除
-            PokedexManager.Instance.GetPokedexFormFile(clientData.GetClientDetails(clientName));
+            //PokedexManager.Instance.GetPokedexFormFile(clientData.GetClientDetails(clientName));
 
             clientData.GetClientDetails(clientName).pokedexState++;
         }
@@ -113,9 +123,10 @@ public class CustomerManager : Singleton<CustomerManager>
                         int produce = FarmlandManager.Instance.Produce(matureCropDict[i].seedName);
                         int soldCount = (int)(produce * UnityEngine.Random.Range(0.8f, 1.0f));
                         if (soldCount != produce)
-                            InventoryManager.Instance.AddItem(matureCropDict[i].cropName, produce - soldCount);
+                            InventoryManager.Instance.AddItem(matureCropDict[i].cropName, soldCount, produce - soldCount);
                         matureCropDict[i].growthStage=4;
                         StartCoroutine(matureCropDict[i].Harvest());
+                        EventHandler.CallSetClientProbabilityEvent(clientData.GetClientDetails(clientName), 0);
 
                         //判斷是否購買到喜歡的作物,是的話新增特殊對話
                         if (!clientDict[clientName].Contains(PokedexState.喜歡)&& clientData.GetClientDetails(clientName).pokedexState!=0)
@@ -135,7 +146,7 @@ public class CustomerManager : Singleton<CustomerManager>
                     {
                         int produce = FarmlandManager.Instance.Produce(matureCropDict[i].seedName);
                         int soldCount = (int)(produce * UnityEngine.Random.Range(0.4f, 0.7f));
-                        InventoryManager.Instance.AddItem(matureCropDict[i].cropName, produce - soldCount);
+                        InventoryManager.Instance.AddItem(matureCropDict[i].cropName, soldCount, produce - soldCount);
                         matureCropDict[i].growthStage = 4;
                         StartCoroutine(matureCropDict[i].Harvest());
                         return soldCount;
@@ -150,9 +161,10 @@ public class CustomerManager : Singleton<CustomerManager>
                 {
                     int produce = FarmlandManager.Instance.Produce(matureCropDict[0].seedName);
                     int soldCount = (int)(produce * UnityEngine.Random.Range(0.1f, 0.3f));
-                    InventoryManager.Instance.AddItem(matureCropDict[0].cropName, produce - soldCount);
+                    InventoryManager.Instance.AddItem(matureCropDict[0].cropName, soldCount, produce - soldCount);
                     matureCropDict[0].growthStage = 4;
                     StartCoroutine(matureCropDict[0].Harvest());
+                    EventHandler.CallSetClientProbabilityEvent(clientData.GetClientDetails(clientName), 2);
 
                     //判斷是否購買到討厭的作物,是的話新增特殊對話
                     if (!clientDict[clientName].Contains(PokedexState.討厭) && clientData.GetClientDetails(clientName).pokedexState != 0)

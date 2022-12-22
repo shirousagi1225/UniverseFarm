@@ -23,7 +23,7 @@ public class DialogueManager : Singleton<DialogueManager>
         dialogueJson.SendWebRequest();
         StartCoroutine(WaitLoadData(dialogueJson));
         Debug.Log(dialogueJson.downloadHandler.text);
-        dialogueData_Ob = JsonMapper.ToObject<DialogueData_Ob>(Encoding.GetEncoding("utf-8").GetString(dialogueJson.downloadHandler.data));
+        //dialogueData_Ob = JsonMapper.ToObject<DialogueData_Ob>(Encoding.GetEncoding("utf-8").GetString(dialogueJson.downloadHandler.data));
         Debug.Log(dialogueData_Ob);
 
         dialogueStack = new Stack<string>();
@@ -64,9 +64,9 @@ public class DialogueManager : Singleton<DialogueManager>
         {
             EventHandler.CallShowDialogueEvent(currentCustomer, string.Empty);
             //關閉子UI
-            //需加入判斷是否同時有其他次UI開啟
+            //加入判斷是否同時有其他次UI開啟
             if(!GameObject.Find("UniversalPanel").activeInHierarchy)
-                EventHandler.CallShowSecUIEvent(false, true);
+                EventHandler.CallShowSecUIEvent("SecCanvas", false, true);
             isTalking = false;
         }    
     }
@@ -76,5 +76,10 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         while(!dialogueJson.isDone)
             yield return 0;
+        while (dialogueData_Ob == null)
+        {
+            dialogueData_Ob = JsonMapper.ToObject<DialogueData_Ob>(Encoding.GetEncoding("utf-8").GetString(dialogueJson.downloadHandler.data));
+            yield return 0;
+        }
     }
 }

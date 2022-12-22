@@ -13,75 +13,83 @@ MonoBehaviour:
   m_Name: ClientDataList
   m_EditorClassIdentifier: 
   clientDetailsList:
+  - clientName: 8
+    clientSprite: {fileID: 21300000, guid: a5bdd9f0e1d7ae44781a2e475b5bc077, type: 3}
+    basicInfo: {fileID: 0}
+    walkSpeed: 1
+    stateTime: 2
+    rarityType: 1
+    occurrence: 1
+    pokedexState: 0
+    favoriteFoodList: 0c000000
+    hateFoodList: 07000000
   - clientName: 1
     clientSprite: {fileID: 21300000, guid: dc445b27be8abfb45b2717d03b7df090, type: 3}
     basicInfo: {fileID: 0}
     walkSpeed: 1
     stateTime: 2
-    occurrence: 0
+    rarityType: 2
+    occurrence: 0.5
     pokedexState: 0
     favoriteFoodList: 04000000
     hateFoodList: 0b000000
+  - clientName: 4
+    clientSprite: {fileID: 21300000, guid: c77dfdc7f5431bb46b4ce62a62ac9fbc, type: 3}
+    basicInfo: {fileID: 0}
+    walkSpeed: 1
+    stateTime: 2
+    rarityType: 2
+    occurrence: 0.5
+    pokedexState: 0
+    favoriteFoodList: 0a000000
+    hateFoodList: 09000000
+  - clientName: 6
+    clientSprite: {fileID: 21300000, guid: ac7a2a991d7933f459dac8fbe9bd2d2d, type: 3}
+    basicInfo: {fileID: 0}
+    walkSpeed: 1
+    stateTime: 2
+    rarityType: 3
+    occurrence: 0.5
+    pokedexState: 0
+    favoriteFoodList: 05000000
+    hateFoodList: 04000000
   - clientName: 2
     clientSprite: {fileID: 21300000, guid: b1d52b2d2e4e07d4faac51b486ab502a, type: 3}
     basicInfo: {fileID: 0}
     walkSpeed: 2
     stateTime: 3
-    occurrence: 0
+    rarityType: 3
+    occurrence: 0.5
     pokedexState: 0
     favoriteFoodList: 08000000
     hateFoodList: 0a000000
-  - clientName: 0
-    clientSprite: {fileID: 0}
+  - clientName: 7
+    clientSprite: {fileID: 21300000, guid: e042a1eb210d9af49b93a187d13f3ee0, type: 3}
     basicInfo: {fileID: 0}
-    walkSpeed: 0
-    stateTime: 0
-    occurrence: 0
-    pokedexState: 0
-    favoriteFoodList: 0b000000
-    hateFoodList: 05000000
-  - clientName: 0
-    clientSprite: {fileID: 0}
-    basicInfo: {fileID: 0}
-    walkSpeed: 0
-    stateTime: 0
-    occurrence: 0
-    pokedexState: 0
-    favoriteFoodList: 0a000000
-    hateFoodList: 09000000
-  - clientName: 0
-    clientSprite: {fileID: 0}
-    basicInfo: {fileID: 0}
-    walkSpeed: 0
-    stateTime: 0
-    occurrence: 0
-    pokedexState: 0
-    favoriteFoodList: 06000000
-    hateFoodList: 03000000
-  - clientName: 0
-    clientSprite: {fileID: 0}
-    basicInfo: {fileID: 0}
-    walkSpeed: 0
-    stateTime: 0
-    occurrence: 0
-    pokedexState: 0
-    favoriteFoodList: 05000000
-    hateFoodList: 04000000
-  - clientName: 0
-    clientSprite: {fileID: 0}
-    basicInfo: {fileID: 0}
-    walkSpeed: 0
-    stateTime: 0
-    occurrence: 0
+    walkSpeed: 1
+    stateTime: 2
+    rarityType: 4
+    occurrence: 0.334
     pokedexState: 0
     favoriteFoodList: 03000000
     hateFoodList: 06000000
-  - clientName: 0
-    clientSprite: {fileID: 0}
+  - clientName: 5
+    clientSprite: {fileID: 21300000, guid: d29a799fa4ecc5e43b053d956935c908, type: 3}
     basicInfo: {fileID: 0}
-    walkSpeed: 0
-    stateTime: 0
-    occurrence: 0
+    walkSpeed: 1
+    stateTime: 2
+    rarityType: 4
+    occurrence: 0.333
     pokedexState: 0
-    favoriteFoodList: 0c000000
-    hateFoodList: 07000000
+    favoriteFoodList: 06000000
+    hateFoodList: 03000000
+  - clientName: 3
+    clientSprite: {fileID: 21300000, guid: e5d2c4a52cc9f71418e0d2d1d007dbec, type: 3}
+    basicInfo: {fileID: 0}
+    walkSpeed: 1
+    stateTime: 2
+    rarityType: 4
+    occurrence: 0.333
+    pokedexState: 0
+    favoriteFoodList: 0b000000
+    hateFoodList: 05000000

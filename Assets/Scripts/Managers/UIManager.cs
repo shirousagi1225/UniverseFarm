@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class UIManager : Singleton<UIManager>
 {
     public GameObject mainCanvas;
-    public GameObject SecCanvas;
+    public GameObject secCanvas;
+    public GameObject triCanvas;
     public GameObject hintButton;
 
     //用於背包欄UI
@@ -33,15 +34,15 @@ public class UIManager : Singleton<UIManager>
     }
 
     //切換主UI與次UI事件
-    private void OnShowSecUIEvent(bool canOpenSecUI, bool canSwitch)
+    private void OnShowSecUIEvent(string canvas,bool canOpenSecUI, bool canSwitch)
     {
         if (canOpenSecUI)
         {
-            ShowSecUI(canOpenSecUI, canSwitch);
+            ShowSecUI(canvas,canOpenSecUI, canSwitch);
         }
         else
         {
-            CloseSecUI(canOpenSecUI, canSwitch);
+            CloseSecUI(canvas,canOpenSecUI, canSwitch);
         }
     }
 
@@ -63,27 +64,27 @@ public class UIManager : Singleton<UIManager>
             isBackpackBarUIOpen = !isBackpackBarUIOpen;
             if (isBackpackBarUIOpen)
             {
-                ShowSecUI(isBackpackBarUIOpen,true);
-                SecCanvas.transform.GetChild(1).gameObject.SetActive(isBackpackBarUIOpen);
+                ShowSecUI("SecCanvas",isBackpackBarUIOpen,true);
+                secCanvas.transform.GetChild(1).gameObject.SetActive(isBackpackBarUIOpen);
 
                 //限制只開啟種子類型的物品欄
-                SecCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(!isBackpackBarUIOpen);
-                SecCanvas.transform.GetChild(1).GetChild(1).gameObject.SetActive(isBackpackBarUIOpen);
+                secCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(!isBackpackBarUIOpen);
+                secCanvas.transform.GetChild(1).GetChild(1).gameObject.SetActive(isBackpackBarUIOpen);
             }
             else
             {
-                CloseSecUI(isBackpackBarUIOpen,true);
-                SecCanvas.transform.GetChild(1).gameObject.SetActive(isBackpackBarUIOpen);
+                CloseSecUI("SecCanvas", isBackpackBarUIOpen,true);
+                secCanvas.transform.GetChild(1).gameObject.SetActive(isBackpackBarUIOpen);
 
-                SecCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(!isBackpackBarUIOpen);
-                SecCanvas.transform.GetChild(1).GetChild(1).gameObject.SetActive(isBackpackBarUIOpen);
+                secCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(!isBackpackBarUIOpen);
+                secCanvas.transform.GetChild(1).GetChild(1).gameObject.SetActive(isBackpackBarUIOpen);
             }
         }
     }
 
     //須寫啟動購買UI方法
 
-    private void ShowSecUI(bool toggleFactor, bool canSwitch)
+    private void ShowSecUI(string canvas,bool toggleFactor, bool canSwitch)
     {
         //判斷是要切換主次UI或單獨開啟次UI
         if (canSwitch)
@@ -92,12 +93,24 @@ public class UIManager : Singleton<UIManager>
             mainCanvas.GetComponent<CanvasGroup>().interactable = !toggleFactor;
             mainCanvas.GetComponent<CanvasGroup>().blocksRaycasts = !toggleFactor;
         }
-        SecCanvas.GetComponent<CanvasGroup>().alpha = 1.0f;
-        SecCanvas.GetComponent<CanvasGroup>().interactable = toggleFactor;
-        SecCanvas.GetComponent<CanvasGroup>().blocksRaycasts = toggleFactor;
+
+        //判斷是要使用哪種次UI
+        switch (canvas)
+        {
+            case "SecCanvas":
+                secCanvas.GetComponent<CanvasGroup>().alpha = 1.0f;
+                secCanvas.GetComponent<CanvasGroup>().interactable = toggleFactor;
+                secCanvas.GetComponent<CanvasGroup>().blocksRaycasts = toggleFactor;
+                break;
+            case "TriCanvas":
+                triCanvas.GetComponent<CanvasGroup>().alpha = 1.0f;
+                triCanvas.GetComponent<CanvasGroup>().interactable = toggleFactor;
+                triCanvas.GetComponent<CanvasGroup>().blocksRaycasts = toggleFactor;
+                break;
+        }
     }
 
-    private void CloseSecUI(bool toggleFactor, bool canSwitch)
+    private void CloseSecUI(string canvas,bool toggleFactor, bool canSwitch)
     {
         //判斷是要切換主次UI或單獨開啟次UI
         if (canSwitch)
@@ -106,8 +119,20 @@ public class UIManager : Singleton<UIManager>
             mainCanvas.GetComponent<CanvasGroup>().interactable = !toggleFactor;
             mainCanvas.GetComponent<CanvasGroup>().blocksRaycasts = !toggleFactor;
         }
-        SecCanvas.GetComponent<CanvasGroup>().alpha = 0f;
-        SecCanvas.GetComponent<CanvasGroup>().interactable = toggleFactor;
-        SecCanvas.GetComponent<CanvasGroup>().blocksRaycasts = toggleFactor;
+
+        //判斷是要使用哪種次UI
+        switch (canvas)
+        {
+            case "SecCanvas":
+                secCanvas.GetComponent<CanvasGroup>().alpha = 0f;
+                secCanvas.GetComponent<CanvasGroup>().interactable = toggleFactor;
+                secCanvas.GetComponent<CanvasGroup>().blocksRaycasts = toggleFactor;
+                break;
+            case "TriCanvas":
+                triCanvas.GetComponent<CanvasGroup>().alpha = 0f;
+                triCanvas.GetComponent<CanvasGroup>().interactable = toggleFactor;
+                triCanvas.GetComponent<CanvasGroup>().blocksRaycasts = toggleFactor;
+                break;
+        }
     }
 }

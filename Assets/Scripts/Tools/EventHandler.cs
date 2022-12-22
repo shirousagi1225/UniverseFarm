@@ -58,16 +58,22 @@ public static class EventHandler
         UpdateHintUIEvent?.Invoke(farmland, farmlandStateSprite);
     }
 
+    public static event Action<ClientDetails, int> SetClientProbabilityEvent;
+    public static void CallSetClientProbabilityEvent(ClientDetails clientDetails, int favoriteState)
+    {
+        SetClientProbabilityEvent?.Invoke(clientDetails, favoriteState);
+    }
+
     public static event Action<Transform,Collider2D[]> GetOtherCustomerEvent;
     public static void CallGetOtherCustomerEvent(Transform customer, Collider2D[] collider2Ds)
     {
         GetOtherCustomerEvent?.Invoke(customer, collider2Ds);
     }
 
-    public static event Action<bool,bool> ShowSecUIEvent;
-    public static void CallShowSecUIEvent(bool canOpenSecUI,bool canSwitch)
+    public static event Action<string,bool,bool> ShowSecUIEvent;
+    public static void CallShowSecUIEvent(string canvas,bool canOpenSecUI,bool canSwitch)
     {
-        ShowSecUIEvent?.Invoke(canOpenSecUI, canSwitch);
+        ShowSecUIEvent?.Invoke(canvas,canOpenSecUI, canSwitch);
     }
 
     public static event Action<ClientDetails, string> ShowDialogueEvent;
@@ -76,10 +82,16 @@ public static class EventHandler
         ShowDialogueEvent?.Invoke(clientDetails, dialogue);
     }
 
-    public static event Action<ClientDetails> ShowPokedexEvent;
-    public static void CallShowPokedexEvent(ClientDetails clientDetails)
+    public static event Action<ClientDetails> UpdateCustomerPokedexEvent;
+    public static void CallUpdateCustomerPokedexEvent(ClientDetails clientDetails)
     {
-        ShowPokedexEvent?.Invoke(clientDetails);
+        UpdateCustomerPokedexEvent?.Invoke(clientDetails);
+    }
+
+    public static event Action<ItemDetails> UpdateCropPokedexEvent;
+    public static void CallUpdateCropPokedexEvent(ItemDetails itemDetails)
+    {
+        UpdateCropPokedexEvent?.Invoke(itemDetails);
     }
 
     public static event Action<UniversalUIType, ItemDetails,int> SetUniversalUIEvent;
@@ -92,5 +104,11 @@ public static class EventHandler
     public static void CallShowUniversalUIEvent(UniversalUIDetails UITypeDetails, ItemDetails itemDetails, int count)
     {
         ShowUniversalUIEvent?.Invoke(UITypeDetails,itemDetails, count);
+    }
+
+    public static event Action StartGameEvent;
+    public static void CallStartGameEvent()
+    {
+        StartGameEvent?.Invoke();
     }
 }

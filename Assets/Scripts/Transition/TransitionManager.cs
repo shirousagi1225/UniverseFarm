@@ -8,13 +8,12 @@ public class TransitionManager : Singleton<TransitionManager>
     protected override void Awake()
     {
         base.Awake();
-        //有加入登入介面就不須寫下列方法
         StartCoroutine(AwakeScene());
     }
 
     private IEnumerator AwakeScene()
     {
-        yield return SceneManager.LoadSceneAsync("Home", LoadSceneMode.Additive);
+        yield return SceneManager.LoadSceneAsync("Start", LoadSceneMode.Additive);
 
         Scene newScene = SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
         SceneManager.SetActiveScene(newScene);

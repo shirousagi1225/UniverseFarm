@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class InventoryManager : Singleton<InventoryManager>
+public class InventoryManager : Singleton<InventoryManager>,ISaveable
 {
     public ItemDataList_SO itemData;
     public ItemDataList_SO seedData;
@@ -13,12 +12,13 @@ public class InventoryManager : Singleton<InventoryManager>
 
     private void Start()
     {
-        EventHandler.CallUpdateMoneyUIEvent(itemData.GetItemDetails(ItemName.StarStone));
-        EventHandler.CallUpdateMoneyUIEvent(itemData.GetItemDetails(ItemName.Obsidian));
+        //註冊保存數據
+        ISaveable saveable = this;
+        saveable.SaveableRegister();
     }
 
     //seedName參數於測試使用,正式將寫在增加種子方法(已修改)
-    public void AddItem(ItemName itemName, int itemCount)
+    public void AddItem(ItemName itemName,int soldCount, int itemCount)
     {
         if (!itemList.Contains(itemName))
         {
@@ -30,8 +30,11 @@ public class InventoryManager : Singleton<InventoryManager>
             else
             {
                 itemList.Add(itemName);
+                EventHandler.CallUpdateCropPokedexEvent(itemData.GetItemDetails(itemName));
                 itemData.GetItemDetails(itemName).itemCount += itemCount;
                 EventHandler.CallUpdateInventoryUIEvent(itemData.GetItemDetails(itemName), ItemName.None, itemList.Count-1,true,"Item");
+                //透過遞迴同時進行貨幣數量更新
+                AddItem(ItemName.StarStone, 0, itemData.GetItemDetails(itemName).itemPrice * soldCount);
             }
         }
         else
@@ -61,7 +64,7 @@ public class InventoryManager : Singleton<InventoryManager>
         }
 
         //測試用,正式刪除
-        EventHandler.CallSetUniversalUIEvent(UniversalUIType.CustomerSell, seedData.GetItemDetails(seedName), seedCount);
+        EventHandler.CallSetUniversalUIEvent(UniversalUIType.Confirm, seedData.GetItemDetails(seedName), seedCount);
     }
 
     //減少持有量方法(未完成)
@@ -109,6 +112,53 @@ public class InventoryManager : Singleton<InventoryManager>
                 else
                     EventHandler.CallUpdateInventoryUIEvent(seedData.GetItemDetails(itemName), ItemName.None, seedList.FindIndex(i => i == itemName), false,"Seed");
             }
+        }
+    }
+
+    public SaveData GenerateSaveData()
+    {
+        SaveData saveData = new SaveData();
+        saveData.coinCountDict.Add("StarStone".ToString(), itemData.GetItemDetails(ItemName.StarStone).itemCount);
+        saveData.coinCountDict.Add("Obsidian".ToString(), itemData.GetItemDetails(ItemName.Obsidian).itemCount);
+        saveData.itemList = itemList;
+        saveData.seedList = seedList;
+        foreach (var item in itemList)
+            saveData.itemCountDict.Add(item.ToString(), itemData.GetItemDetails(item).itemCount);
+        foreach (var seed in seedList)
+            saveData.seedCountDict.Add(seed.ToString(), seedData.GetItemDetails(seed).itemCount);
+
+        return saveData;
+    }
+
+    public void RestoreGameData(SaveData saveData)
+    {
+        itemData.GetItemDetails(ItemName.StarStone).itemCount = saveData.coinCountDict["StarStone"];
+        itemData.GetItemDetails(ItemName.Obsidian).itemCount = saveData.coinCountDict["Obsidian"];
+        itemList = saveData.itemList;
+        seedList = saveData.seedList;
+        foreach (var item in saveData.itemList)
+            itemData.GetItemDetails(item).itemCount = saveData.itemCountDict[item.ToString()];
+        foreach (var seed in saveData.seedList)
+            seedData.GetItemDetails(seed).itemCount = saveData.seedCountDict[seed.ToString()];
+
+        //還原貨幣數量
+        EventHandler.CallUpdateMoneyUIEvent(itemData.GetItemDetails(ItemName.StarStone));
+        EventHandler.CallUpdateMoneyUIEvent(itemData.GetItemDetails(ItemName.Obsidian));
+
+        //還原作物物品欄
+        int itemIndex =0;
+        foreach (var item in itemList)
+        {
+            EventHandler.CallUpdateInventoryUIEvent(itemData.GetItemDetails(item), ItemName.None, itemIndex, true, "Item");
+            itemIndex++;
+        }
+
+        //還原種子物品欄
+        int seedIndex = 0;
+        foreach (var seed in seedList)
+        {
+            EventHandler.CallUpdateInventoryUIEvent(seedData.GetItemDetails(seed), seedData.GetItemDetails(seed).cropName, seedIndex, true, "Seed");
+            seedIndex++;
         }
     }
 }

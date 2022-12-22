@@ -21,6 +21,7 @@ public class ClientDetails
     public Sprite basicInfo;
     public float walkSpeed;
     public int stateTime;
+    public RarityType rarityType;
     public float occurrence;
     public int pokedexState;
     public List<ItemName> favoriteFoodList;

@@ -14,18 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   universalUIDetailsList:
   - UIType: 1
-    title: 
-    buttonText01: 
-    buttonText02: 
+    title: "\u7372\u5F97\u7269\u54C1"
   - UIType: 2
     title: "\u62DB\u5F85\u6210\u529F"
-    buttonText01: "\u666E\u901A\u9818\u53D6"
-    buttonText02: "\u96D9\u500D\u9818\u53D6"
   - UIType: 3
     title: 
-    buttonText01: 
-    buttonText02: 
   - UIType: 4
     title: 
-    buttonText01: 
-    buttonText02: 

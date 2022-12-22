@@ -17,6 +17,9 @@ public class ItemDataList_SO : ScriptableObject
 public class ItemDetails
 {
     public ItemName itemName;
+    public ItemName cropName;
+    public PokedexNum pokedexNum;
     public Sprite itemSprite;
     public int itemCount;
+    public int itemPrice;
 }
