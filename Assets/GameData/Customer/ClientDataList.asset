@@ -14,82 +14,106 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clientDetailsList:
   - clientName: 8
-    clientSprite: {fileID: 21300000, guid: a5bdd9f0e1d7ae44781a2e475b5bc077, type: 3}
-    basicInfo: {fileID: 0}
+    pokedexNum: 18
+    clientSprite: {fileID: 21300000, guid: 98ca70760d0ce764a99ca2ec80cf1039, type: 3}
+    clientAnimatorCO: {fileID: 9100000, guid: 69011fa5df8c670409f649d1debc5f94, type: 2}
     walkSpeed: 1
     stateTime: 2
     rarityType: 1
     occurrence: 1
     pokedexState: 0
     favoriteFoodList: 0c000000
+    favoriteFoodSprite: {fileID: 755159166, guid: aa68dded6013d25449e154da1203922d, type: 3}
     hateFoodList: 07000000
+    hateFoodSprite: {fileID: 2052720765, guid: aa68dded6013d25449e154da1203922d, type: 3}
   - clientName: 1
-    clientSprite: {fileID: 21300000, guid: dc445b27be8abfb45b2717d03b7df090, type: 3}
-    basicInfo: {fileID: 0}
+    pokedexNum: 11
+    clientSprite: {fileID: 21300000, guid: 1afb004ef275bc84cbb88cab8c198ef4, type: 3}
+    clientAnimatorCO: {fileID: 9100000, guid: 61075342bc8946b4a85547602809e37f, type: 2}
     walkSpeed: 1
     stateTime: 2
     rarityType: 2
     occurrence: 0.5
     pokedexState: 0
     favoriteFoodList: 04000000
+    favoriteFoodSprite: {fileID: 1802632010, guid: aa68dded6013d25449e154da1203922d, type: 3}
     hateFoodList: 0b000000
+    hateFoodSprite: {fileID: -470768784, guid: aa68dded6013d25449e154da1203922d, type: 3}
   - clientName: 4
-    clientSprite: {fileID: 21300000, guid: c77dfdc7f5431bb46b4ce62a62ac9fbc, type: 3}
-    basicInfo: {fileID: 0}
+    pokedexNum: 12
+    clientSprite: {fileID: 21300000, guid: e53e0406452fefb4b9b53bddc075c70c, type: 3}
+    clientAnimatorCO: {fileID: 9100000, guid: ea1656b420153134ead152f4a303ef90, type: 2}
     walkSpeed: 1
     stateTime: 2
     rarityType: 2
     occurrence: 0.5
     pokedexState: 0
     favoriteFoodList: 0a000000
+    favoriteFoodSprite: {fileID: 2140201460, guid: aa68dded6013d25449e154da1203922d, type: 3}
     hateFoodList: 09000000
+    hateFoodSprite: {fileID: 575924864, guid: aa68dded6013d25449e154da1203922d, type: 3}
   - clientName: 6
-    clientSprite: {fileID: 21300000, guid: ac7a2a991d7933f459dac8fbe9bd2d2d, type: 3}
-    basicInfo: {fileID: 0}
+    pokedexNum: 13
+    clientSprite: {fileID: 21300000, guid: 75ed0571b35354641a312345f6fa0f41, type: 3}
+    clientAnimatorCO: {fileID: 9100000, guid: b2e558fb96ee7dc45ac9466f7cc3ef74, type: 2}
     walkSpeed: 1
     stateTime: 2
     rarityType: 3
     occurrence: 0.5
     pokedexState: 0
     favoriteFoodList: 05000000
+    favoriteFoodSprite: {fileID: -1008829470, guid: aa68dded6013d25449e154da1203922d, type: 3}
     hateFoodList: 04000000
+    hateFoodSprite: {fileID: 194424982, guid: aa68dded6013d25449e154da1203922d, type: 3}
   - clientName: 2
-    clientSprite: {fileID: 21300000, guid: b1d52b2d2e4e07d4faac51b486ab502a, type: 3}
-    basicInfo: {fileID: 0}
+    pokedexNum: 14
+    clientSprite: {fileID: 21300000, guid: 0ff72c8f8d0c1ff488dd6ce1a6487837, type: 3}
+    clientAnimatorCO: {fileID: 9100000, guid: b5744a70fbe80414998961b04f0ef8c5, type: 2}
     walkSpeed: 2
     stateTime: 3
     rarityType: 3
     occurrence: 0.5
     pokedexState: 0
     favoriteFoodList: 08000000
+    favoriteFoodSprite: {fileID: -781587859, guid: aa68dded6013d25449e154da1203922d, type: 3}
     hateFoodList: 0a000000
+    hateFoodSprite: {fileID: 1495762768, guid: aa68dded6013d25449e154da1203922d, type: 3}
   - clientName: 7
-    clientSprite: {fileID: 21300000, guid: e042a1eb210d9af49b93a187d13f3ee0, type: 3}
-    basicInfo: {fileID: 0}
+    pokedexNum: 15
+    clientSprite: {fileID: 21300000, guid: 103effc6729ac0842a563ced95b2d17c, type: 3}
+    clientAnimatorCO: {fileID: 9100000, guid: c133271fffb760b4489aec0f0dfac237, type: 2}
     walkSpeed: 1
     stateTime: 2
     rarityType: 4
     occurrence: 0.334
     pokedexState: 0
     favoriteFoodList: 03000000
+    favoriteFoodSprite: {fileID: -1495408503, guid: aa68dded6013d25449e154da1203922d, type: 3}
     hateFoodList: 06000000
+    hateFoodSprite: {fileID: 1369353355, guid: aa68dded6013d25449e154da1203922d, type: 3}
   - clientName: 5
-    clientSprite: {fileID: 21300000, guid: d29a799fa4ecc5e43b053d956935c908, type: 3}
-    basicInfo: {fileID: 0}
+    pokedexNum: 16
+    clientSprite: {fileID: 21300000, guid: ddc7c7542ea62534e813cd1c2b6f07e8, type: 3}
+    clientAnimatorCO: {fileID: 9100000, guid: aa26219f774a4004f8d4c29dfbacf8b3, type: 2}
     walkSpeed: 1
     stateTime: 2
     rarityType: 4
     occurrence: 0.333
     pokedexState: 0
     favoriteFoodList: 06000000
+    favoriteFoodSprite: {fileID: -343395580, guid: aa68dded6013d25449e154da1203922d, type: 3}
     hateFoodList: 03000000
+    hateFoodSprite: {fileID: -317973142, guid: aa68dded6013d25449e154da1203922d, type: 3}
   - clientName: 3
-    clientSprite: {fileID: 21300000, guid: e5d2c4a52cc9f71418e0d2d1d007dbec, type: 3}
-    basicInfo: {fileID: 0}
+    pokedexNum: 17
+    clientSprite: {fileID: 21300000, guid: 6ba3d6f5732d9e546b015e8fd19e6b17, type: 3}
+    clientAnimatorCO: {fileID: 9100000, guid: 99174e9bdcb5be545ba4792019f3f348, type: 2}
     walkSpeed: 1
     stateTime: 2
     rarityType: 4
     occurrence: 0.333
     pokedexState: 0
     favoriteFoodList: 0b000000
+    favoriteFoodSprite: {fileID: 1151199721, guid: aa68dded6013d25449e154da1203922d, type: 3}
     hateFoodList: 05000000
+    hateFoodSprite: {fileID: -458054383, guid: aa68dded6013d25449e154da1203922d, type: 3}

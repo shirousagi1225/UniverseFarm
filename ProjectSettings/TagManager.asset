@@ -9,6 +9,7 @@ TagManager:
   - Crop
   - Customer
   - Seed
+  - Facility
   layers:
   - Default
   - TransparentFX

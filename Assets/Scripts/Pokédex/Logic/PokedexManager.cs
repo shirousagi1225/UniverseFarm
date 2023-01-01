@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class PokedexManager : Singleton<PokedexManager>
 {
     public GameObject cropItem;
+    public GameObject roleItem;
 
     private Stack<string> storyStack;
     private Stack<string> backgroundStack;
@@ -39,9 +40,18 @@ public class PokedexManager : Singleton<PokedexManager>
         EventHandler.UpdateCropPokedexEvent -= OnUpdateCropPokedexEvent;
     }
 
+    //更新顧客圖鑑事件：根據傳入顧客數據解鎖顧客圖鑑
     private void OnUpdateCustomerPokedexEvent(ClientDetails clientDetails)
     {
-        
+        if (clientDetails.pokedexState == 0)
+        {
+            foreach (var roleItem in roleItem.GetComponentsInChildren<Transform>())
+            {
+                Debug.Log(roleItem);
+                if (roleItem.name == clientDetails.pokedexNum.ToString())
+                    roleItem.GetComponent<PolygonImage>().enabled = true;
+            }
+        }
     }
 
     //更新植物圖鑑事件：根據傳入植物數據解鎖植物圖鑑

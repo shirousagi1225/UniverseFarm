@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ac102c2d97cf6f48bb09ccbd5c44036, type: 3}
+  m_Name: FacilityDataList
+  m_EditorClassIdentifier: 
+  FacilityDetailsList:
+  - facilityName: 1
+    farmlandState: 0
+    maintainAnimatorCO: {fileID: 0}
+  - facilityName: 2
+    farmlandState: 0
+    maintainAnimatorCO: {fileID: 0}
+  - facilityName: 3
+    farmlandState: 4
+    maintainAnimatorCO: {fileID: 9100000, guid: 62ca88786939c784cb8e92479c4f85fc, type: 2}
+  - facilityName: 4
+    farmlandState: 5
+    maintainAnimatorCO: {fileID: 9100000, guid: cc56dcdfb253a6b48a93457766e53553, type: 2}
+  - facilityName: 5
+    farmlandState: 3
+    maintainAnimatorCO: {fileID: 9100000, guid: 2cf7b8f9ef317634bb2192e26f5b4fb8, type: 2}

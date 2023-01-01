@@ -71,5 +71,5 @@ MonoBehaviour:
     cropName: 12
     pokedexNum: 0
     itemSprite: {fileID: 21300000, guid: eb3a9e49c408f044c8e6af75bf0b921b, type: 3}
-    itemCount: 0
+    itemCount: 4
     itemPrice: 0

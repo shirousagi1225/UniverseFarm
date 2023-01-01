@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3974900432913888682}
   - component: {fileID: 4387268082626753907}
   - component: {fileID: 6730052592910348335}
+  - component: {fileID: 6972302361854310472}
   m_Layer: 7
   m_Name: Customer
   m_TagString: Customer
@@ -142,3 +143,23 @@ CapsuleCollider2D:
   m_Offset: {x: -0.12445283, y: -0.1798842}
   m_Size: {x: 2.12883, y: 3.534183}
   m_Direction: 0
+--- !u!95 &6972302361854310472
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3974900432913888681}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

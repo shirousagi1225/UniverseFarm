@@ -28,7 +28,7 @@ public class FarmlandManager : Singleton<FarmlandManager>,ISaveable
     //變換農地狀態事件(未完成)
     private void OnUpdateFarmlandStateEvent(Farmland currentFarm)
     {
-        //農田管理(解鎖、修繕)
+        /*//農田管理(解鎖、修繕)
         if (currentFarm.canPlant)
         {
             //農田提示(可種植)
@@ -55,14 +55,21 @@ public class FarmlandManager : Singleton<FarmlandManager>,ISaveable
             currentFarm.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = farmlandStateData.GetFarmlandStateDetails(AlgorithmManager.Instance.ChooseAbnormalState()).farmlandStateSprite;
             EventHandler.CallUpdateHintUIEvent(currentFarm, currentFarm.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
             Debug.Log("異常狀態");
+        }*/
+
+        if (AlgorithmManager.Instance.TriggerAbnormalState())
+        {
+            //作物狀況提示（缺水、害蟲、施肥）：以機率控制
+            FarmlandStateDetails farmlandState = farmlandStateData.GetFarmlandStateDetails(AlgorithmManager.Instance.ChooseAbnormalState());
+            currentFarm.transform.GetChild(0).gameObject.SetActive(true);
+            currentFarm.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = farmlandState.farmlandStateSprite;
+            currentFarm.SetFarmlandState(farmlandState.farmlandState);
+            //EventHandler.CallUpdateHintUIEvent(currentFarm, currentFarm.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
+            Debug.Log("異常狀態");
         }
+
         //Debug.Log(currentFarm.transform.GetChild(0).gameObject.activeInHierarchy);
     }
-
-    /*public FarmlandDetails GetFarmlandInfo(FarmlandName farmlandName)
-    {
-        return farmlandData.GetFarmlandDetails(farmlandName);
-    }*/
 
     //生成作物方法(未完成)
     public void CreateCrop(ItemDetails seedDetails, ItemName itemName, GameObject crop, Collider2D farmlandCD)
@@ -72,7 +79,7 @@ public class FarmlandManager : Singleton<FarmlandManager>,ISaveable
         farmlandCD.transform.GetChild(0).gameObject.SetActive(false);
         Instantiate(crop, farmlandCD.gameObject.transform);
         farmlandCD.enabled = false;
-        farmlandCD.gameObject.transform.GetChild(2).GetComponent<Crop>().SetCrop(seedDetails, itemName);
+        farmlandCD.gameObject.transform.GetChild(3).GetComponent<Crop>().SetCrop(seedDetails, itemName);
         //測試用,正式itemName改為seedDetails(已修改)
         SetCropStageTime(seedDetails.itemName, cropData.GetCropStateDetails(seedDetails.itemName));
         //測試用,正式itemName改為seedDetails(已修改)

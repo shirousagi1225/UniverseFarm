@@ -50,7 +50,7 @@ public class Crop : MonoBehaviour
         else
             yield return new WaitForSeconds(0);
 
-        EventHandler.CallUpdateFarmlandStateEvent(transform.parent.GetComponent<Farmland>());
+        //EventHandler.CallUpdateFarmlandStateEvent(transform.parent.GetComponent<Farmland>());
         transform.parent.GetComponent<Collider2D>().enabled = true;
         Destroy(gameObject);
     }

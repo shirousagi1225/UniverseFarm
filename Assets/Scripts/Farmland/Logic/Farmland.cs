@@ -7,13 +7,29 @@ public class Farmland : MonoBehaviour
 {
     public FarmlandName farmlandName;
 
+    private FarmlandState _currentState;//當前農田狀態
     private SpriteRenderer farmlandSR;
 
     private bool isUnlock;
     private bool isRepair;
 
+    //判斷農田處於哪種狀態(用於維護：依據狀態可使用對應設施,並於處理後重設狀態)
+    public FarmlandState currentState
+    {
+        get
+        {
+            return _currentState;
+        }
+
+        set
+        {
+            _currentState = value;
+        }
+    }
+
     private void Awake()
     {
+        _currentState = FarmlandState.None;
         farmlandSR = GetComponent<SpriteRenderer>();
     }
 
@@ -21,7 +37,7 @@ public class Farmland : MonoBehaviour
     {
         get
         {
-            if (!isUnlock || isRepair || transform.childCount>2)
+            if (!isUnlock || isRepair || transform.childCount>3)
                 return false;
             else
                 return true;
@@ -36,7 +52,7 @@ public class Farmland : MonoBehaviour
             Unlock();
             //須呼叫變換農地狀態事件(解鎖)
             //呼叫變換農地狀態事件(可翻土)
-            EventHandler.CallUpdateFarmlandStateEvent(GetComponent<Farmland>());
+            //EventHandler.CallUpdateFarmlandStateEvent(GetComponent<Farmland>());
         }
         else if (isRepair)
         {
@@ -50,7 +66,7 @@ public class Farmland : MonoBehaviour
         isUnlock = true;
         isRepair = false;
         FarmlandManager.Instance.AddFarmland(farmlandName);
-        transform.GetChild(0).gameObject.SetActive(true);
+        //transform.GetChild(0).gameObject.SetActive(true);
         //測試用,正式刪除
         if(!canPlant)
             GetComponent<Collider2D>().enabled = false;
@@ -62,5 +78,11 @@ public class Farmland : MonoBehaviour
     {
         //需判斷是否翻過土,有翻過才能開啟種植UI
         UIManager.Instance.ShowBackpackBarUI();
+    }
+
+    //設定農田狀態
+    public void SetFarmlandState(FarmlandState farmlandState)
+    {
+        _currentState = farmlandState;
     }
 }

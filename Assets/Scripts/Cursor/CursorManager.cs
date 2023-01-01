@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 public class CursorManager : MonoBehaviour
 {
@@ -100,6 +99,10 @@ public class CursorManager : MonoBehaviour
             case "Seed":
                 var seed = clickObject.GetComponent<Seed>();
                 seed?.SeedClicked();
+                break;
+            case "Facility":
+                var facility = clickObject.GetComponent<Facility>();
+                facility?.FacilityClicked(clickObject.GetComponent<Animator>());
                 break;
         }
     }

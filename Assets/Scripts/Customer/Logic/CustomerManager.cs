@@ -11,6 +11,7 @@ public class CustomerManager : Singleton<CustomerManager>
     public GameObject customer;
 
     private Dictionary<ClientName, List<PokedexState>> clientDict = new();
+    private Animator doorAni;
 
     private void OnEnable()
     {
@@ -24,6 +25,7 @@ public class CustomerManager : Singleton<CustomerManager>
         AddClient(ClientName.多莉絲);
         AddClient(ClientName.尼古拉斯);
         AddClient(ClientName.魔法阿罵);
+        doorAni=null;
     }
 
     private void OnDisable()
@@ -65,8 +67,14 @@ public class CustomerManager : Singleton<CustomerManager>
     }
 
     //生成顧客方法(未完成)
-    public void CreateCustomer(GameObject spawnPoint)
+    public IEnumerator CreateCustomer(GameObject spawnPoint)
     {
+        //啟動大門動畫,並在正確時間點生成顧客
+        if (doorAni == null)
+            doorAni = GameObject.Find("Door").GetComponent<Animator>();
+        AnimationManager.Instance.FacilityUseing(doorAni);
+        yield return new WaitForSeconds(7f);
+
         Instantiate(customer, spawnPoint.transform.position,Quaternion.identity, spawnPoint.transform.parent);
         spawnPoint.transform.parent.GetChild(spawnPoint.transform.parent.childCount-1).GetComponent<Customer>().SetCustomer(clientData.GetClientDetails(AlgorithmManager.Instance.ChooseClient()));
     }
@@ -84,6 +92,8 @@ public class CustomerManager : Singleton<CustomerManager>
             //啟動對話方法
             DialogueManager.Instance.GetDialogueFormFile(clientData.GetClientDetails(clientName), clientDict[clientName][clientDict[clientName].Count-1].ToString());
             DialogueManager.Instance.ShowDialogue();
+
+            EventHandler.CallUpdateCustomerPokedexEvent(clientData.GetClientDetails(clientName));
 
             //測試用,正式要刪除
             //PokedexManager.Instance.GetPokedexFormFile(clientData.GetClientDetails(clientName));

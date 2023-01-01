@@ -78,8 +78,8 @@ public class TimeManager : Singleton<TimeManager>
                     else if(!farmland.transform.GetChild(0).gameObject.activeInHierarchy)
                     {
                         growTimeDict[farmland.farmlandName] -= new TimeSpan(0, 0, 1);
-                        FarmlandManager.Instance.SetCropState(farmland.transform.GetChild(2).GetComponent<SpriteRenderer>(),
-                            farmland.transform.GetChild(2).GetComponent<Crop>().seedName, growTimeDict[farmland.farmlandName]);
+                        FarmlandManager.Instance.SetCropState(farmland.transform.GetChild(3).GetComponent<SpriteRenderer>(),
+                            farmland.transform.GetChild(3).GetComponent<Crop>().seedName, growTimeDict[farmland.farmlandName]);
                         Debug.Log(growTimeDict[farmland.farmlandName].ToString());
                     }
 
@@ -118,7 +118,7 @@ public class TimeManager : Singleton<TimeManager>
             {
                 if (comingTime <= new TimeSpan(0, 0, 0))
                 {
-                    CustomerManager.Instance.CreateCustomer(GameObject.Find("SpawnPoint"));
+                    yield return StartCoroutine(CustomerManager.Instance.CreateCustomer(GameObject.Find("SpawnPoint")));
                     //測試用,正式暫定TimeSpan(0, 9, 59)
                     comingTime = new TimeSpan(0, 0, 9);
                 }

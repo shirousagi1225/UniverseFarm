@@ -81,6 +81,7 @@ public class Customer : MonoBehaviour
     {
         clientName = clientDetails.clientName;
         GetComponent<SpriteRenderer>().sprite = clientDetails.clientSprite;
+        GetComponent <Animator>().runtimeAnimatorController= clientDetails.clientAnimatorCO;
         speed = clientDetails.walkSpeed;
         stateTime = clientDetails.stateTime;
     }

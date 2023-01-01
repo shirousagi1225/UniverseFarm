@@ -6,7 +6,8 @@ public enum ItemName
 
 public enum PokedexNum
 {
-    None, Corn_1, Grape_2, Succulents_3, Watermelon_4, Potato_5, Chicken_6, Yarn_7, Orange_8, Cabbage_9, AnimalFoot_10
+    None, Corn_1, Grape_2, Succulents_3, Watermelon_4, Potato_5, Chicken_6, Yarn_7, Orange_8, Cabbage_9, AnimalFoot_10,
+    Eski, Nicholas, Leonard, Albert, Grandma, Doris, Yalanna, Hanji
 }
 
 public enum FarmlandName
@@ -42,4 +43,9 @@ public enum PokedexState
 public enum UniversalUIType
 {
     None, Confirm, CustomerSell,ShopSell,ShopBuy
+}
+
+public enum FacilityName
+{
+    None, Door, FarmHouse, Insecticide, SmallHouse, Well
 }

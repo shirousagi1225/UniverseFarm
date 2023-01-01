@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ClientDataList_SO", menuName = "Customer/ClientDataList_SO")]
@@ -17,13 +18,16 @@ public class ClientDataList_SO : ScriptableObject
 public class ClientDetails
 {
     public ClientName clientName;
+    public PokedexNum pokedexNum;
     public Sprite clientSprite;
-    public Sprite basicInfo;
+    public AnimatorController clientAnimatorCO;
     public float walkSpeed;
     public int stateTime;
     public RarityType rarityType;
     public float occurrence;
     public int pokedexState;
     public List<ItemName> favoriteFoodList;
+    public Sprite favoriteFoodSprite;
     public List<ItemName> hateFoodList;
+    public Sprite hateFoodSprite;
 }
