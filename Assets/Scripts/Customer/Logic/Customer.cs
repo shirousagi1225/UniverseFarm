@@ -67,7 +67,7 @@ public class Customer : MonoBehaviour
             //需在必要時開關農田區碰撞框
             if (Physics2D.OverlapCircle(transform.position, 2f, 1 << LayerMask.NameToLayer("InteractiveArea")) && CheckOut())
             {
-                CustomerManager.Instance.EnterDialogue(clientName);
+                CustomerManager.Instance.EnterDialogue(clientName,PokedexState.None);
                 Destroy(gameObject);
             }
             else

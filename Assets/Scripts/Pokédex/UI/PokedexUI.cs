@@ -10,6 +10,7 @@ public class PokedexUI : MonoBehaviour
     public GameObject cropInfo;
     public GameObject roleItem;
     public GameObject roleInfo;
+    public GameObject roleStory;
 
     //開啟圖鑑按鈕方法
     public void PokedexButton()
@@ -61,6 +62,20 @@ public class PokedexUI : MonoBehaviour
     {
         roleInfo.SetActive(false);
         roleItem.SetActive(true);
+    }
+
+    //開啟顧客故事方法
+    public void StoryButton()
+    {
+        roleInfo.SetActive(false);
+        roleStory.SetActive(true);
+    }
+
+    //返回顧客圖鑑詳情方法
+    public void BackCustomerInfo()
+    {
+        roleStory.SetActive(false);
+        roleInfo.SetActive(true);
     }
 
     //關閉圖鑑按鈕方法

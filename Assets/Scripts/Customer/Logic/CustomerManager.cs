@@ -80,23 +80,33 @@ public class CustomerManager : Singleton<CustomerManager>
     }
 
     //進入對話方法(未完成)
-    public void EnterDialogue(ClientName clientName)
+    public void EnterDialogue(ClientName clientName, PokedexState dialogueName)
     {
         //Debug.Log(clientDict[clientName].Count);
 
         //需判斷角色圖鑑解鎖階段,顯示相對應的對話
-        if (clientDict[clientName].Count-1== clientData.GetClientDetails(clientName).pokedexState)
+        if (dialogueName != PokedexState.None)
         {
+            //回顧
+
+            //啟動子UI
+            EventHandler.CallShowSecUIEvent("SecCanvas", true, false);
+            //啟動對話方法
+            DialogueManager.Instance.GetDialogueFormFile(clientData.GetClientDetails(clientName), dialogueName.ToString());
+            DialogueManager.Instance.ShowDialogue();
+        }
+        else if (clientDict[clientName].Count-1== clientData.GetClientDetails(clientName).pokedexState)
+        {
+            //初次解鎖
+
             //啟動子UI
             EventHandler.CallShowSecUIEvent("SecCanvas", true,true);
             //啟動對話方法
             DialogueManager.Instance.GetDialogueFormFile(clientData.GetClientDetails(clientName), clientDict[clientName][clientDict[clientName].Count-1].ToString());
             DialogueManager.Instance.ShowDialogue();
 
-            EventHandler.CallUpdateCustomerPokedexEvent(clientData.GetClientDetails(clientName));
-
-            //測試用,正式要刪除
-            //PokedexManager.Instance.GetPokedexFormFile(clientData.GetClientDetails(clientName));
+            if(clientData.GetClientDetails(clientName).pokedexState==0)
+                EventHandler.CallUpdateCustomerPokedexEvent(clientData.GetClientDetails(clientName),1);
 
             clientData.GetClientDetails(clientName).pokedexState++;
         }
@@ -138,9 +148,12 @@ public class CustomerManager : Singleton<CustomerManager>
                         StartCoroutine(matureCropDict[i].Harvest());
                         EventHandler.CallSetClientProbabilityEvent(clientData.GetClientDetails(clientName), 0);
 
-                        //判斷是否購買到喜歡的作物,是的話新增特殊對話
-                        if (!clientDict[clientName].Contains(PokedexState.喜歡)&& clientData.GetClientDetails(clientName).pokedexState!=0)
+                        //判斷是否購買到喜歡的作物,是的話新增特殊對話及更新圖鑑
+                        if (!clientDict[clientName].Contains(PokedexState.喜歡)&& clientData.GetClientDetails(clientName).pokedexState != 0)
+                        {
                             clientDict[clientName].Add(PokedexState.喜歡);
+                            EventHandler.CallUpdateCustomerPokedexEvent(clientData.GetClientDetails(clientName), favoriteState);
+                        }
 
                         return soldCount;
                     }
@@ -176,9 +189,12 @@ public class CustomerManager : Singleton<CustomerManager>
                     StartCoroutine(matureCropDict[0].Harvest());
                     EventHandler.CallSetClientProbabilityEvent(clientData.GetClientDetails(clientName), 2);
 
-                    //判斷是否購買到討厭的作物,是的話新增特殊對話
+                    //判斷是否購買到討厭的作物,是的話新增特殊對話及更新圖鑑
                     if (!clientDict[clientName].Contains(PokedexState.討厭) && clientData.GetClientDetails(clientName).pokedexState != 0)
+                    {
                         clientDict[clientName].Add(PokedexState.討厭);
+                        EventHandler.CallUpdateCustomerPokedexEvent(clientData.GetClientDetails(clientName), favoriteState);
+                    }
 
                     return soldCount;
                 }

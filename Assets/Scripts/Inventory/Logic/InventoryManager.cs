@@ -41,6 +41,8 @@ public class InventoryManager : Singleton<InventoryManager>,ISaveable
         {
             itemData.GetItemDetails(itemName).itemCount += itemCount;
             EventHandler.CallUpdateInventoryUIEvent(itemData.GetItemDetails(itemName), ItemName.None, itemList.FindIndex(i => i == itemName), false, "Item");
+            //透過遞迴同時進行貨幣數量更新
+            AddItem(ItemName.StarStone, 0, itemData.GetItemDetails(itemName).itemPrice * soldCount);
         }
 
         //需思考通用UI類型的定義

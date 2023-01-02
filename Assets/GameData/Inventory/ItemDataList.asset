@@ -17,7 +17,7 @@ MonoBehaviour:
     cropName: 0
     pokedexNum: 0
     itemSprite: {fileID: 21300000, guid: 28c882ed5ef004b468a4c337a74ae960, type: 3}
-    itemCount: 0
+    itemCount: 180
     itemPrice: 0
   - itemName: 2
     cropName: 0
@@ -84,4 +84,4 @@ MonoBehaviour:
     pokedexNum: 10
     itemSprite: {fileID: 21300000, guid: dfed6ddd5a857624b92d76ae57ae3891, type: 3}
     itemCount: 0
-    itemPrice: 300
+    itemPrice: 165

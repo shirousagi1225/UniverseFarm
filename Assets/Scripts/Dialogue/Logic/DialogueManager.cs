@@ -65,7 +65,9 @@ public class DialogueManager : Singleton<DialogueManager>
             EventHandler.CallShowDialogueEvent(currentCustomer, string.Empty);
             //關閉子UI
             //加入判斷是否同時有其他次UI開啟
-            if(!GameObject.Find("UniversalPanel").activeInHierarchy)
+            if(GameObject.Find("TriCanvas").GetComponent<CanvasGroup>().alpha == 1f)
+                EventHandler.CallShowSecUIEvent("SecCanvas", false, false);
+            else if (!GameObject.Find("UniversalPanel").activeInHierarchy)
                 EventHandler.CallShowSecUIEvent("SecCanvas", false, true);
             isTalking = false;
         }    

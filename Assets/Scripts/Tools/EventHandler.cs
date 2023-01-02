@@ -82,10 +82,10 @@ public static class EventHandler
         ShowDialogueEvent?.Invoke(clientDetails, dialogue);
     }
 
-    public static event Action<ClientDetails> UpdateCustomerPokedexEvent;
-    public static void CallUpdateCustomerPokedexEvent(ClientDetails clientDetails)
+    public static event Action<ClientDetails,int> UpdateCustomerPokedexEvent;
+    public static void CallUpdateCustomerPokedexEvent(ClientDetails clientDetails,int favoriteState)
     {
-        UpdateCustomerPokedexEvent?.Invoke(clientDetails);
+        UpdateCustomerPokedexEvent?.Invoke(clientDetails, favoriteState);
     }
 
     public static event Action<ItemDetails> UpdateCropPokedexEvent;
