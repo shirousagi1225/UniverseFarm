@@ -16,14 +16,14 @@ MonoBehaviour:
   - itemName: 1
     cropName: 0
     pokedexNum: 0
-    itemSprite: {fileID: 21300000, guid: 28c882ed5ef004b468a4c337a74ae960, type: 3}
-    itemCount: 180
+    itemSprite: {fileID: 21300000, guid: 768a81d85d613b44a8634c7013d56919, type: 3}
+    itemCount: 1500
     itemPrice: 0
   - itemName: 2
     cropName: 0
     pokedexNum: 0
-    itemSprite: {fileID: 21300000, guid: 9919946f40a375c4aafa66076c14910b, type: 3}
-    itemCount: 200
+    itemSprite: {fileID: 21300000, guid: 437751b1097fd0340996a101585c542c, type: 3}
+    itemCount: 50
     itemPrice: 0
   - itemName: 3
     cropName: 0

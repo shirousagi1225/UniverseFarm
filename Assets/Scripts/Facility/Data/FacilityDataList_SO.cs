@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "FacilityDataList_SO", menuName = "Facility/FacilityDataList_SO")]
@@ -19,5 +18,5 @@ public class FacilityDetails
 {
     public FacilityName facilityName;
     public FarmlandState farmlandState;
-    public AnimatorController maintainAnimatorCO;
+    public AnimationClip maintainAniClip;
 }

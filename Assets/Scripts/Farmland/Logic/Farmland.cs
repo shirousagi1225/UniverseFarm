@@ -63,6 +63,7 @@ public class Farmland : MonoBehaviour
     //解鎖方法(未完成)
     public void Unlock()
     {
+        _currentState = FarmlandState.Good;
         isUnlock = true;
         isRepair = false;
         FarmlandManager.Instance.AddFarmland(farmlandName);

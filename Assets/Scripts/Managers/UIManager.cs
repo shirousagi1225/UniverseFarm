@@ -65,19 +65,19 @@ public class UIManager : Singleton<UIManager>
             if (isBackpackBarUIOpen)
             {
                 ShowSecUI("SecCanvas",isBackpackBarUIOpen,true);
-                secCanvas.transform.GetChild(1).gameObject.SetActive(isBackpackBarUIOpen);
+                secCanvas.transform.GetChild(2).gameObject.SetActive(isBackpackBarUIOpen);
 
                 //限制只開啟種子類型的物品欄
-                secCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(!isBackpackBarUIOpen);
-                secCanvas.transform.GetChild(1).GetChild(1).gameObject.SetActive(isBackpackBarUIOpen);
+                secCanvas.transform.GetChild(2).GetChild(0).gameObject.SetActive(!isBackpackBarUIOpen);
+                secCanvas.transform.GetChild(2).GetChild(1).gameObject.SetActive(isBackpackBarUIOpen);
             }
             else
             {
                 CloseSecUI("SecCanvas", isBackpackBarUIOpen,true);
-                secCanvas.transform.GetChild(1).gameObject.SetActive(isBackpackBarUIOpen);
+                secCanvas.transform.GetChild(2).gameObject.SetActive(isBackpackBarUIOpen);
 
-                secCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(!isBackpackBarUIOpen);
-                secCanvas.transform.GetChild(1).GetChild(1).gameObject.SetActive(isBackpackBarUIOpen);
+                secCanvas.transform.GetChild(2).GetChild(0).gameObject.SetActive(!isBackpackBarUIOpen);
+                secCanvas.transform.GetChild(2).GetChild(1).gameObject.SetActive(isBackpackBarUIOpen);
             }
         }
     }

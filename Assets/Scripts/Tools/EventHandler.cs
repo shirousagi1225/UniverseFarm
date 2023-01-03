@@ -106,6 +106,12 @@ public static class EventHandler
         ShowUniversalUIEvent?.Invoke(UITypeDetails,itemDetails, count);
     }
 
+    public static event Action<ItemDetails, ItemDetails> SetShopUIEvent;
+    public static void CallSetShopUIEvent(ItemDetails seedDetails, ItemDetails itemDetails)
+    {
+        SetShopUIEvent?.Invoke(seedDetails, itemDetails);
+    }
+
     public static event Action StartGameEvent;
     public static void CallStartGameEvent()
     {

@@ -15,16 +15,16 @@ MonoBehaviour:
   FacilityDetailsList:
   - facilityName: 1
     farmlandState: 0
-    maintainAnimatorCO: {fileID: 0}
+    maintainAniClip: {fileID: 0}
   - facilityName: 2
     farmlandState: 0
-    maintainAnimatorCO: {fileID: 0}
+    maintainAniClip: {fileID: 0}
   - facilityName: 3
     farmlandState: 4
-    maintainAnimatorCO: {fileID: 9100000, guid: 62ca88786939c784cb8e92479c4f85fc, type: 2}
+    maintainAniClip: {fileID: 7400000, guid: 5ceb5f3735bf95e42a4397fa35608cf0, type: 2}
   - facilityName: 4
     farmlandState: 5
-    maintainAnimatorCO: {fileID: 9100000, guid: cc56dcdfb253a6b48a93457766e53553, type: 2}
+    maintainAniClip: {fileID: 7400000, guid: 5db6958917f98d44199dd6b8e53360f4, type: 2}
   - facilityName: 5
     farmlandState: 3
-    maintainAnimatorCO: {fileID: 9100000, guid: 2cf7b8f9ef317634bb2192e26f5b4fb8, type: 2}
+    maintainAniClip: {fileID: 7400000, guid: 40b10dc38024bdd448a95ee29dc727fc, type: 2}

@@ -19,7 +19,7 @@ public class Seed : MonoBehaviour
     {
         int count = Random.Range(1, 4);
 
-        InventoryManager.Instance.AddSeed(seedName, cropName, count);
+        InventoryManager.Instance.AddSeed(seedName, cropName, count,false);
         Destroy(gameObject);
     }
 }

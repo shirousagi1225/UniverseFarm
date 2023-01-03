@@ -15,6 +15,9 @@ public class InventoryManager : Singleton<InventoryManager>,ISaveable
         //註冊保存數據
         ISaveable saveable = this;
         saveable.SaveableRegister();
+
+        EventHandler.CallUpdateMoneyUIEvent(itemData.GetItemDetails(ItemName.StarStone));
+        EventHandler.CallUpdateMoneyUIEvent(itemData.GetItemDetails(ItemName.Obsidian));
     }
 
     //seedName參數於測試使用,正式將寫在增加種子方法(已修改)
@@ -51,7 +54,7 @@ public class InventoryManager : Singleton<InventoryManager>,ISaveable
     }
 
     //增加種子方法(未完成)
-    public void AddSeed(ItemName seedName, ItemName itemName, int seedCount)
+    public void AddSeed(ItemName seedName, ItemName itemName, int seedCount,bool isShopBuy)
     {
         if (!seedList.Contains(seedName))
         {
@@ -64,6 +67,10 @@ public class InventoryManager : Singleton<InventoryManager>,ISaveable
             seedData.GetItemDetails(seedName).itemCount += seedCount;
             EventHandler.CallUpdateInventoryUIEvent(seedData.GetItemDetails(seedName), itemName, seedList.FindIndex(i => i == seedName), false, "Seed");
         }
+
+        //判斷種子包取得方式
+        if (isShopBuy)
+            ReduceItem(ItemName.StarStone, seedData.GetItemDetails(seedName).itemPrice* seedCount);
 
         //測試用,正式刪除
         EventHandler.CallSetUniversalUIEvent(UniversalUIType.Confirm, seedData.GetItemDetails(seedName), seedCount);
@@ -115,6 +122,13 @@ public class InventoryManager : Singleton<InventoryManager>,ISaveable
                     EventHandler.CallUpdateInventoryUIEvent(seedData.GetItemDetails(itemName), ItemName.None, seedList.FindIndex(i => i == itemName), false,"Seed");
             }
         }
+    }
+
+    //解鎖種子方法
+    public void UnlockSeed(ItemName seedName)
+    {
+        EventHandler.CallSetShopUIEvent(seedData.GetItemDetails(seedName), itemData.GetItemDetails(seedData.GetItemDetails(seedName).cropName));
+        Debug.Log(seedName);
     }
 
     public SaveData GenerateSaveData()

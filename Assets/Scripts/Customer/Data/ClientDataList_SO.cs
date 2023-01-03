@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ClientDataList_SO", menuName = "Customer/ClientDataList_SO")]
@@ -19,8 +18,9 @@ public class ClientDetails
 {
     public ClientName clientName;
     public PokedexNum pokedexNum;
+    public ItemName seedName;
     public Sprite clientSprite;
-    public AnimatorController clientAnimatorCO;
+    public AnimationClip clientAniClip;
     public float walkSpeed;
     public int stateTime;
     public RarityType rarityType;

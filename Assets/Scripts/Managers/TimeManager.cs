@@ -80,7 +80,7 @@ public class TimeManager : Singleton<TimeManager>
                         growTimeDict[farmland.farmlandName] -= new TimeSpan(0, 0, 1);
                         FarmlandManager.Instance.SetCropState(farmland.transform.GetChild(3).GetComponent<SpriteRenderer>(),
                             farmland.transform.GetChild(3).GetComponent<Crop>().seedName, growTimeDict[farmland.farmlandName]);
-                        Debug.Log(growTimeDict[farmland.farmlandName].ToString());
+                        //Debug.Log(growTimeDict[farmland.farmlandName].ToString());
                     }
 
                     //暫定(可修改)：每隔一段時間執行觸發異常狀態判斷(目前觸發是所有種植中作物進行一次判斷,非個別判斷)
@@ -95,7 +95,7 @@ public class TimeManager : Singleton<TimeManager>
                         else
                             judgeAbnormalTime += new TimeSpan(0, 0, 1);
                         isAbnormalCountDown=true;
-                        Debug.Log(judgeAbnormalTime);
+                        //Debug.Log(judgeAbnormalTime);
                     }
                 }
 
@@ -113,8 +113,15 @@ public class TimeManager : Singleton<TimeManager>
     {
         while (true)
         {
+            int plantCount=0;
+            foreach (var farmland in FindObjectsOfType<Farmland>())
+            {
+                if (farmland.currentState != FarmlandState.None&&!farmland.canPlant)
+                    plantCount++;
+            }
+
             //需判斷以種植中的農田數量開放進場人數
-            if(FindObjectsOfType<Customer>().Length < FindObjectsOfType<Farmland>().Length)
+            if (FindObjectsOfType<Customer>().Length < plantCount)
             {
                 if (comingTime <= new TimeSpan(0, 0, 0))
                 {

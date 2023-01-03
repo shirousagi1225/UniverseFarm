@@ -20,12 +20,14 @@ public class FacilityManager : Singleton<FacilityManager>
                 if (farmland.currentState == facilityData.GetFacilityDetails(facilityName).farmlandState)
                 {
                     Transform maintain = farmland.transform.GetChild(2);
-                    farmland.currentState = FarmlandState.None;
+                    farmland.currentState = FarmlandState.Good; ;
 
                     if (isAbnormal)
                         AnimationManager.Instance.FacilityUseing(facilityAni);
 
-                    maintain.GetComponent<Animator>().runtimeAnimatorController = facilityData.GetFacilityDetails(facilityName).maintainAnimatorCO;
+                    AnimatorOverrideController aniCO = new AnimatorOverrideController(maintain.GetComponent<Animator>().runtimeAnimatorController);
+                    maintain.GetComponent<Animator>().runtimeAnimatorController = aniCO;
+                    aniCO[aniCO.animationClips[0]] = facilityData.GetFacilityDetails(facilityName).maintainAniClip;
                     AnimationManager.Instance.Maintain(maintain);
 
                     farmland.transform.GetChild(0).gameObject.SetActive(false);

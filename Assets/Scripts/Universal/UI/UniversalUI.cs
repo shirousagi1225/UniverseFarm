@@ -65,11 +65,15 @@ public class UniversalUI : MonoBehaviour
         title.text = "";
         RemoveAllChildren(rewardContent);
         rewardType = 0;
-        //判斷是否有開啟主UI
-        if (GameObject.Find("MainCanvas").GetComponent<CanvasGroup>().alpha == 0f)
-            EventHandler.CallShowSecUIEvent("SecCanvas", false, true);
-        else
-            EventHandler.CallShowSecUIEvent("SecCanvas", false,false);
+        //判斷是否有開啟商城UI
+        if (GameObject.Find("ShopPanel") == null)
+        {
+            //判斷是否有開啟主UI
+            if (GameObject.Find("MainCanvas").GetComponent<CanvasGroup>().alpha == 0f)
+                EventHandler.CallShowSecUIEvent("SecCanvas", false, true);
+            else
+                EventHandler.CallShowSecUIEvent("SecCanvas", false, false);
+        }
     }
 
     //須寫雙倍領取方法

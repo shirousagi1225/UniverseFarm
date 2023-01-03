@@ -15,8 +15,9 @@ MonoBehaviour:
   clientDetailsList:
   - clientName: 8
     pokedexNum: 18
+    seedName: 0
     clientSprite: {fileID: 21300000, guid: 98ca70760d0ce764a99ca2ec80cf1039, type: 3}
-    clientAnimatorCO: {fileID: 9100000, guid: 69011fa5df8c670409f649d1debc5f94, type: 2}
+    clientAniClip: {fileID: 7400000, guid: ea65c0365dc098443aa9085913acc16d, type: 2}
     walkSpeed: 1
     stateTime: 2
     rarityType: 1
@@ -28,8 +29,9 @@ MonoBehaviour:
     hateFoodSprite: {fileID: 2052720765, guid: aa68dded6013d25449e154da1203922d, type: 3}
   - clientName: 1
     pokedexNum: 11
+    seedName: 18
     clientSprite: {fileID: 21300000, guid: 1afb004ef275bc84cbb88cab8c198ef4, type: 3}
-    clientAnimatorCO: {fileID: 9100000, guid: 61075342bc8946b4a85547602809e37f, type: 2}
+    clientAniClip: {fileID: 7400000, guid: c03eb61efef023445a23b96aab0ae7dd, type: 2}
     walkSpeed: 1
     stateTime: 2
     rarityType: 2
@@ -41,8 +43,9 @@ MonoBehaviour:
     hateFoodSprite: {fileID: -470768784, guid: aa68dded6013d25449e154da1203922d, type: 3}
   - clientName: 4
     pokedexNum: 12
+    seedName: 17
     clientSprite: {fileID: 21300000, guid: e53e0406452fefb4b9b53bddc075c70c, type: 3}
-    clientAnimatorCO: {fileID: 9100000, guid: ea1656b420153134ead152f4a303ef90, type: 2}
+    clientAniClip: {fileID: 7400000, guid: 7528eb7e048d08847a4b99c13c7d23ea, type: 2}
     walkSpeed: 1
     stateTime: 2
     rarityType: 2
@@ -54,8 +57,9 @@ MonoBehaviour:
     hateFoodSprite: {fileID: 575924864, guid: aa68dded6013d25449e154da1203922d, type: 3}
   - clientName: 6
     pokedexNum: 13
+    seedName: 21
     clientSprite: {fileID: 21300000, guid: 75ed0571b35354641a312345f6fa0f41, type: 3}
-    clientAnimatorCO: {fileID: 9100000, guid: b2e558fb96ee7dc45ac9466f7cc3ef74, type: 2}
+    clientAniClip: {fileID: 7400000, guid: 6ba19387ee24ea14fa5169c88c891d95, type: 2}
     walkSpeed: 1
     stateTime: 2
     rarityType: 3
@@ -67,8 +71,9 @@ MonoBehaviour:
     hateFoodSprite: {fileID: 194424982, guid: aa68dded6013d25449e154da1203922d, type: 3}
   - clientName: 2
     pokedexNum: 14
+    seedName: 19
     clientSprite: {fileID: 21300000, guid: 0ff72c8f8d0c1ff488dd6ce1a6487837, type: 3}
-    clientAnimatorCO: {fileID: 9100000, guid: b5744a70fbe80414998961b04f0ef8c5, type: 2}
+    clientAniClip: {fileID: 7400000, guid: 383c7a509e0811445a3fca2fdc0a8d59, type: 2}
     walkSpeed: 2
     stateTime: 3
     rarityType: 3
@@ -80,8 +85,9 @@ MonoBehaviour:
     hateFoodSprite: {fileID: 1495762768, guid: aa68dded6013d25449e154da1203922d, type: 3}
   - clientName: 7
     pokedexNum: 15
+    seedName: 16
     clientSprite: {fileID: 21300000, guid: 103effc6729ac0842a563ced95b2d17c, type: 3}
-    clientAnimatorCO: {fileID: 9100000, guid: c133271fffb760b4489aec0f0dfac237, type: 2}
+    clientAniClip: {fileID: 7400000, guid: c6293f228ebe2f84c9ce2615e8473d3d, type: 2}
     walkSpeed: 1
     stateTime: 2
     rarityType: 4
@@ -93,8 +99,9 @@ MonoBehaviour:
     hateFoodSprite: {fileID: 1369353355, guid: aa68dded6013d25449e154da1203922d, type: 3}
   - clientName: 5
     pokedexNum: 16
+    seedName: 15
     clientSprite: {fileID: 21300000, guid: ddc7c7542ea62534e813cd1c2b6f07e8, type: 3}
-    clientAnimatorCO: {fileID: 9100000, guid: aa26219f774a4004f8d4c29dfbacf8b3, type: 2}
+    clientAniClip: {fileID: 7400000, guid: 9cb1bd4d8396ca74798ea5fda37ebf98, type: 2}
     walkSpeed: 1
     stateTime: 2
     rarityType: 4
@@ -106,8 +113,9 @@ MonoBehaviour:
     hateFoodSprite: {fileID: -317973142, guid: aa68dded6013d25449e154da1203922d, type: 3}
   - clientName: 3
     pokedexNum: 17
+    seedName: 20
     clientSprite: {fileID: 21300000, guid: 6ba3d6f5732d9e546b015e8fd19e6b17, type: 3}
-    clientAnimatorCO: {fileID: 9100000, guid: 99174e9bdcb5be545ba4792019f3f348, type: 2}
+    clientAniClip: {fileID: 7400000, guid: 7231cd9e06936964db6e7053e5a35ad7, type: 2}
     walkSpeed: 1
     stateTime: 2
     rarityType: 4

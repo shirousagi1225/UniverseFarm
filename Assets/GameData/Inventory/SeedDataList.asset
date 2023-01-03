@@ -17,13 +17,13 @@ MonoBehaviour:
     cropName: 3
     pokedexNum: 0
     itemSprite: {fileID: 21300000, guid: c080d3450f0e2174a9a5c1d01a08b038, type: 3}
-    itemCount: 2
+    itemCount: 0
     itemPrice: 80
   - itemName: 14
     cropName: 4
     pokedexNum: 0
     itemSprite: {fileID: 21300000, guid: 62b46541cf2029c448542cce320dad0f, type: 3}
-    itemCount: 2
+    itemCount: 0
     itemPrice: 150
   - itemName: 15
     cropName: 5
@@ -71,5 +71,5 @@ MonoBehaviour:
     cropName: 12
     pokedexNum: 0
     itemSprite: {fileID: 21300000, guid: eb3a9e49c408f044c8e6af75bf0b921b, type: 3}
-    itemCount: 4
+    itemCount: 0
     itemPrice: 20

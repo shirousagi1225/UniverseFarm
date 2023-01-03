@@ -16,21 +16,20 @@ public class CustomerManager : Singleton<CustomerManager>
     private void OnEnable()
     {
         EventHandler.GetOtherCustomerEvent += OnOtherCustomerEvent;
-        //測試用,正式根據初始角色數量而定
-        AddClient(ClientName.艾絲琪);
-        AddClient(ClientName.亞伯特);
-        AddClient(ClientName.雅蘭娜);
-        AddClient(ClientName.漢吉);
-        AddClient(ClientName.倫納德);
-        AddClient(ClientName.多莉絲);
-        AddClient(ClientName.尼古拉斯);
-        AddClient(ClientName.魔法阿罵);
-        doorAni=null;
+        doorAni =null;
     }
 
     private void OnDisable()
     {
         EventHandler.GetOtherCustomerEvent -= OnOtherCustomerEvent;
+    }
+
+    private void Start()
+    {
+        //測試用,正式根據初始角色數量而定
+        InventoryManager.Instance.UnlockSeed(ItemName.膨粒玉米種子);
+        InventoryManager.Instance.UnlockSeed(ItemName.華夫葡萄種子);
+        AddClient(ClientName.魔法阿罵);
     }
 
     //切換圖層事件：當角色間靠近時根據位置遠近切換顯示前後順序,避免重疊(未完成)
@@ -60,6 +59,7 @@ public class CustomerManager : Singleton<CustomerManager>
             List<PokedexState> pokedexStateList = new();
             clientDict.Add(clientName, pokedexStateList);
             clientDict[clientName].Add(PokedexState.初次見面);
+            InventoryManager.Instance.UnlockSeed(clientData.GetClientDetails(clientName).seedName);
             EventHandler.CallSetClientProbabilityEvent(clientData.GetClientDetails(clientName),1);
             //Debug.Log(pokedexStateList.Count);
             //Debug.Log(clientDict[clientName].Count);
@@ -77,6 +77,22 @@ public class CustomerManager : Singleton<CustomerManager>
 
         Instantiate(customer, spawnPoint.transform.position,Quaternion.identity, spawnPoint.transform.parent);
         spawnPoint.transform.parent.GetChild(spawnPoint.transform.parent.childCount-1).GetComponent<Customer>().SetCustomer(clientData.GetClientDetails(AlgorithmManager.Instance.ChooseClient()));
+    }
+
+    //解鎖角色方法
+    public void UnlockCustomer()
+    {
+        bool isUnlock=false;
+        while (!isUnlock)
+        {
+            int customerNum= UnityEngine.Random.Range(1,7);
+            if (!clientDict.ContainsKey((ClientName)customerNum))
+            {
+                isUnlock=true;
+                AddClient((ClientName)customerNum);
+            }
+            Debug.Log((ClientName)customerNum);
+        }
     }
 
     //進入對話方法(未完成)
@@ -108,6 +124,14 @@ public class CustomerManager : Singleton<CustomerManager>
             if(clientData.GetClientDetails(clientName).pokedexState==0)
                 EventHandler.CallUpdateCustomerPokedexEvent(clientData.GetClientDetails(clientName),1);
 
+            if (clientData.GetClientDetails(clientName).pokedexState == 2)
+            {
+                if(clientName==ClientName.魔法阿罵)
+                    AddClient(ClientName.多莉絲);
+                else
+                    UnlockCustomer();
+            }
+                
             clientData.GetClientDetails(clientName).pokedexState++;
         }
     }
